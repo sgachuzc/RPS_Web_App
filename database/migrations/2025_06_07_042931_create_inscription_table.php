@@ -10,7 +10,7 @@ return new class extends Migration {
 
     public function up(): void
     {
-        Schema::create('inscription', function (Blueprint $table) {
+        Schema::create('inscriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Service::class);
             $table->foreignIdFor(User::class);
@@ -23,6 +23,6 @@ return new class extends Migration {
     }
 
     public function down(): void {
-        Schema::dropIfExists('inscription');
+        Schema::dropIfExists('inscriptions');
     }
 };

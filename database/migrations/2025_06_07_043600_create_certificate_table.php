@@ -5,11 +5,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     
     public function up(): void {
-        Schema::create('certificate', function (Blueprint $table) {
+        Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Inscription::class);
             $table->string('code')->unique();
@@ -20,6 +19,6 @@ return new class extends Migration
     }
 
     public function down(): void {
-        Schema::dropIfExists('certificate');
+        Schema::dropIfExists('certificates');
     }
 };
