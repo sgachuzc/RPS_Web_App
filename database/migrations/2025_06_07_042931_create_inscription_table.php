@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Service;
+use App\Models\State;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,6 +19,7 @@ return new class extends Migration {
             $table->string('customer');
             $table->string('phone');
             $table->string('email');
+            $table->foreignIdFor(State::class);
             $table->timestamps();
         });
     }
