@@ -9,9 +9,19 @@
 </head>
 <body>
   <main>
-    <header>Header</header>
+    @auth
+      <x-ui.navbar>
+        <x-ui.nav-link href="/" :active="request()->is('/')">Inicio</x-ui.nav-link>
+        <x-ui.nav-link href="/usuarios" :active="request()->is('usuarios')">Usuarios</x-ui.nav-link>
+        <x-ui.nav-link href="/servicios" :active="request()->is('servicios')">Servicios</x-ui.nav-link>
+        <x-ui.nav-link href="/inscripciones" :active="request()->is('inscripciones')">Inscripciones</x-ui.nav-link>
+        <x-ui.nav-link href="/logout">Cerrar sesión</x-ui.nav-link>
+      </x-ui.navbar>
+    @endauth
     {{ $slot }}
-    <footer>Footer</footer>
+    @auth
+      <x-ui.mini-footer />
+    @endauth
   </main>
 </body>
 </html>

@@ -2,6 +2,8 @@
 
 @import url('./components/ui/button.css');
 @import url('./components/ui/form-field.css');
+@import url('./components/ui/mini-footer.css');
+@import url('./components/ui/navbar.css');
 @import url('./admin/styles.css');
 
 *, ::after, ::before{
@@ -11,6 +13,7 @@
   outline: none;
 
   --color-purple: #6070cf;
+  --color-dark-purple: #4d5ab5;
   --color-light-purple: #7c7ba0;
   --color-white: #f1f4f8;
   --color-green: #71c39a;
