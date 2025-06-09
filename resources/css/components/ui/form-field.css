@@ -16,6 +16,9 @@
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
 }
+.container_form-field:focus-within {
+    border: 1px solid var(--color-purple);
+}
 .wrapper_input-label {
   width: 100%;
 }
