@@ -8,20 +8,20 @@
   <title>RPS - Administrador</title>
 </head>
 <body>
+  {{-- @auth --}}
+    <x-ui.navbar>
+      <x-ui.nav-link href="/adminonline" :active="request()->is('/')">Inicio</x-ui.nav-link>
+      <x-ui.nav-link href="/adminonline/usuarios" :active="request()->is('usuarios')">Usuarios</x-ui.nav-link>
+      <x-ui.nav-link href="/adminonline/servicios" :active="request()->is('servicios')">Servicios</x-ui.nav-link>
+      <x-ui.nav-link href="/adminonline/inscripciones" :active="request()->is('inscripciones')">Inscripciones</x-ui.nav-link>
+      <x-ui.nav-link href="/adminonline/logout">Cerrar sesión</x-ui.nav-link>
+    </x-ui.navbar>
+  {{-- @endauth --}}
   <main>
-    @auth
-      <x-ui.navbar>
-        <x-ui.nav-link href="/" :active="request()->is('/')">Inicio</x-ui.nav-link>
-        <x-ui.nav-link href="/usuarios" :active="request()->is('usuarios')">Usuarios</x-ui.nav-link>
-        <x-ui.nav-link href="/servicios" :active="request()->is('servicios')">Servicios</x-ui.nav-link>
-        <x-ui.nav-link href="/inscripciones" :active="request()->is('inscripciones')">Inscripciones</x-ui.nav-link>
-        <x-ui.nav-link href="/logout">Cerrar sesión</x-ui.nav-link>
-      </x-ui.navbar>
-    @endauth
     {{ $slot }}
-    @auth
-      <x-ui.mini-footer />
-    @endauth
   </main>
+  {{-- @auth --}}
+    <x-ui.mini-footer />
+  {{-- @endauth --}}
 </body>
 </html>
