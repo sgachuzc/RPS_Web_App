@@ -9,6 +9,7 @@
   height: 40px;
   border: 1px solid var(--color-purple);
   cursor: pointer;
+  text-decoration: none;
   
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;

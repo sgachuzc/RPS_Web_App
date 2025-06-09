@@ -23,10 +23,20 @@
 }
 body{
   background-color: var(--color-white);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  user-select: none;
 }
 main{
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100dvh;
-    user-select: none;
+  width: 80%;
+  margin: 20px auto;
+}
+.section_container{
+  margin-bottom: 20px;
+}
+.error_message{
+  color: red;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
