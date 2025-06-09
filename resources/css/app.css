@@ -1,11 +1,29 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@import url('./components/ui/button.css');
+@import url('./components/ui/form-field.css');
+@import url('./admin/styles.css');
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+*, ::after, ::before{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+  outline: none;
+
+  --color-purple: #6070cf;
+  --color-light-purple: #7c7ba0;
+  --color-white: #f1f4f8;
+  --color-green: #71c39a;
+  --color-light-green: #b6ebb7;
+  --color-gray: #c6d2db;
+  --color-blue: #1d1e4a;
+}
+body{
+  background-color: var(--color-white);
+}
+main{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+    user-select: none;
 }
