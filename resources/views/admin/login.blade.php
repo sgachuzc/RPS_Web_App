@@ -1,6 +1,7 @@
 <x-admin-layout>
   <div class="container_login">
-    <form action="" autocomplete="off">
+    <form method="post" action="/login" autocomplete="off">
+      @csrf
       <img src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="70">
       <h1>Iniciar sesión</h1>
       <x-ui.form-field type="email" name="email">

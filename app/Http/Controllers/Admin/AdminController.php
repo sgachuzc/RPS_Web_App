@@ -14,6 +14,10 @@ class AdminController extends Controller {
         return view('admin.login');
     }
 
+    public function index(){
+        return view('admin.index');
+    }
+
     public function users(User $user){
         return view('admin.users', ['users' => $user->all()]);
     }
