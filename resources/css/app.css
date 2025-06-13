@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
+@import url('datatables.net-dt');
+@import url('datatables.net-responsive-dt');
 @import url('./components/ui/button.css');
 @import url('./components/ui/form-field.css');
 @import url('./components/ui/mini-footer.css');
@@ -29,7 +31,7 @@ body{
   user-select: none;
 }
 main{
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
 }
 .section_container{

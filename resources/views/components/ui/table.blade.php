@@ -1,6 +1,7 @@
 @props([
   'title',
   'link',
+  'id'
 ])
 
 <div class="table_container">
@@ -11,7 +12,7 @@
     </x-ui.button>
   </div>
   <div class="table_content">
-    <table id="userTable" class="display nowrap responsive compact">
+    <table id="{{ $id }}" class="display nowrap responsive compact">
       {{ $slot }}
     </table>
   </div>

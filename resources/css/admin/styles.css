@@ -1,3 +1,5 @@
+@import url('../components/ui/table.css');
+
 .container_login{
   display: flex;
   justify-content: center;

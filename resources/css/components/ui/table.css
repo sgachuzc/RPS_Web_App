@@ -4,6 +4,7 @@
   background-color: #fff;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
+  border: 1px solid var(--color-purple);
 }
 .table_header{
   height: auto;
@@ -21,7 +22,7 @@
   font-size: 20px;
 }
 .table_header a{
-  border-top-right-radius: 25px;
+  border-top-right-radius: 23px;
   border-bottom-right-radius: 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
