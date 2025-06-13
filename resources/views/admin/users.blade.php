@@ -5,7 +5,8 @@
         <tr>
           <th>Nombre</th>
           <th>Email</th>
-          <th>Acciónes</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -13,7 +14,20 @@
           <tr>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td>Hola</td>
+            <td>
+              <a href="/adminonline/usuarios/{{ $user->id }}/editar">
+                <img src="{{ Vite::asset('resources/images/icon_update.svg') }}" alt="Editar">
+              </a>
+            </td>
+            <td>
+              <form method="post" action="/adminonline/usuarios/{{ $user->id }}">
+                @csrf
+                @method('delete')
+                <button class="delete_button" type="submit">
+                  <img src="{{ Vite::asset('resources/images/icon_delete.svg') }}" alt="Eliminar">
+                </button>
+              </form>
+            </td>
           </tr>
         @endforeach
       </tbody>
