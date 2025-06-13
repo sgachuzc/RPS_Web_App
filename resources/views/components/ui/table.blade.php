@@ -8,6 +8,7 @@
   <div class="table_header">
     <h1>{{ $title }}</h1>
     <x-ui.button element="link" href="{{ $link }}">
+      <img src="{{ Vite::asset('resources/images/icon_new.svg') }}" alt="Nuevo">
       Nuevo
     </x-ui.button>
   </div>

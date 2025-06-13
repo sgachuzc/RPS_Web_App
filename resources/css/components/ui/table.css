@@ -26,7 +26,24 @@
   border-bottom-right-radius: 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+  display: flex;
+  gap: 10px;
 }
 .table_content{
   padding: 10px;
+}
+.table_options{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.delete_button{
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.delete_button:hover{
+  cursor: pointer;
 }
