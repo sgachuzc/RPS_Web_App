@@ -3,7 +3,10 @@
 @import url('datatables.net-dt');
 @import url('datatables.net-responsive-dt');
 @import url('./components/ui/button.css');
+@import url('./components/ui/form-checkbox.css');
 @import url('./components/ui/form-field.css');
+@import url('./components/ui/form-select.css');
+@import url('./components/ui/form-textarea.css');
 @import url('./components/ui/mini-footer.css');
 @import url('./components/ui/navbar.css');
 @import url('./admin/styles.css');
