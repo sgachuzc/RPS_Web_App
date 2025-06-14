@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('subtitle')->nullable();
             $table->text('description');
             $table->boolean('available')->default(true);
+            $table->boolean('featured');
             $table->foreignIdFor(ServiceType::class);
             $table->foreignIdFor(User::class);
             $table->timestamps();
