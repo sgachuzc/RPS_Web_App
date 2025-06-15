@@ -47,3 +47,7 @@
 .delete_button:hover{
   cursor: pointer;
 }
+.dt-column-header,
+tbody td{
+  text-align: center !important;
+}
