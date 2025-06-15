@@ -18,10 +18,6 @@ class Service extends Model {
         'available'
     ];
 
-    public function serviceType(): BelongsTo {
-        return $this->belongsTo(ServiceType::class);
-    }
-
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }

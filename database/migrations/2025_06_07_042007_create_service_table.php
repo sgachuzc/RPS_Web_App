@@ -14,9 +14,9 @@ return new class extends Migration {
             $table->string('name');
             $table->string('subtitle')->nullable();
             $table->text('description');
+            $table->string('type')->default('Curso');
             $table->boolean('available')->default(true);
-            $table->boolean('featured');
-            $table->foreignIdFor(ServiceType::class);
+            $table->boolean('featured')->default(false);
             $table->foreignIdFor(User::class);
             $table->timestamps();
         });

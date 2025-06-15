@@ -12,7 +12,7 @@
     <x-ui.navbar>
       <x-ui.nav-link href="/adminonline/index" :active="request()->is('adminonline/index')">Inicio</x-ui.nav-link>
       <x-ui.nav-link href="/adminonline/usuarios" :active="request()->is('adminonline/usuarios')">Usuarios</x-ui.nav-link>
-      <x-ui.nav-link href="/adminonline/servicios" :active="request()->is('adminonline/servicios')">Servicios</x-ui.nav-link>
+      <x-ui.nav-link href="/adminonline/services" :active="request()->is('adminonline/services')">Servicios</x-ui.nav-link>
       <x-ui.nav-link href="/adminonline/inscripciones" :active="request()->is('adminonline/inscripciones')">Inscripciones</x-ui.nav-link>
       <x-ui.nav-link href="/logout">Cerrar sesión</x-ui.nav-link>
     </x-ui.navbar>
