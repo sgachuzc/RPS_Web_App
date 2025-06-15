@@ -23,7 +23,7 @@ class SessionController extends Controller {
 
         request()->session()->regenerate();
 
-        return redirect('/adminonline/usuarios');
+        return redirect('/adminonline/index');
     }
 
     public function logout(Request $request){

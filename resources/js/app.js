@@ -24,9 +24,11 @@ const languajeOptions = {
 }
 
 new DataTable('#usuarios',{
+  responsive: true,
   language: languajeOptions
 });
 
 new DataTable('#servicios',{
+  responsive: true,
   language: languajeOptions
 });
