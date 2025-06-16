@@ -24,7 +24,10 @@ Route::prefix('adminonline')->group(function(){
     Route::prefix('services')->middleware('auth')->group(function(){
         Route::get('/', [ServicesController::class, 'index']);
         Route::get('/create', [ServicesController::class, 'create']);
-        Route::post('create', [ServicesController::class, 'store']);
+        Route::post('/create', [ServicesController::class, 'store']);
+        Route::get('/{service}/edit', [ServicesController::class, 'edit']);
+        Route::patch('/{service}', [ServicesController::class, 'update']);
+        Route::delete('/{service}', [ServicesController::class, 'delete']);
     });
 });
 

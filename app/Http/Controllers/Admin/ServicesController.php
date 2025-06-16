@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
-use App\Models\ServiceType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
 
 class ServicesController extends Controller {
     
@@ -34,5 +32,27 @@ class ServicesController extends Controller {
         Auth::user()->services()->create($params);
 
         return redirect('/adminonline/services')->with('success', 'Servicio creado correctamente');
+    }
+
+    public function edit(Service $service){
+        return view('admin.services.edit', ['service' => $service]);
+    }
+
+    public function update(Request $request, Service $service){
+        $params = $request->validate([
+            'name' => ['required'],
+            'subtitle' => ['required'],
+            'description' => ['required'],
+            'type' => ['required', Rule::in(['Curso', 'Auditoría'])],
+        ]);
+        $params['available'] = $request->has('available');
+        $params['featured'] = $request->has('featured');
+        $service->update($params);
+        return redirect('/adminonline/services/')->with('success', 'Servicio actualizado correctamente');
+    }
+
+    public function delete(Service $service){
+        $service->delete();
+        return redirect('/adminonline/services');
     }
 }

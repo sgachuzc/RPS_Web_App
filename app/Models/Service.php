@@ -15,7 +15,8 @@ class Service extends Model {
         'name',
         'subtitle',
         'description',
-        'available'
+        'available',
+        'featured'
     ];
 
     public function user(): BelongsTo {
