@@ -18,7 +18,7 @@ class Inscription extends Model {
         'customer',
         'phone',
         'email',
-        'state_id',
+        'status',
     ];
 
     public function service(): BelongsTo {
@@ -31,10 +31,6 @@ class Inscription extends Model {
 
     public function certificate(): HasOne {
         return $this->hasOne(Certificate::class);
-    }
-
-    public function state(): BelongsTo {
-        return $this->belongsTo(State::class);
     }
       
 }
