@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\InscriptionsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,12 @@ Route::prefix('adminonline')->group(function(){
         Route::get('/{service}/edit', [ServicesController::class, 'edit']);
         Route::patch('/{service}', [ServicesController::class, 'update']);
         Route::delete('/{service}', [ServicesController::class, 'delete']);
+    });
+
+    Route::prefix('inscriptions')->middleware('auth')->group(function(){
+        Route::get('/', [InscriptionsController::class, 'index']);
+        Route::get('/create', [InscriptionsController::class, 'create']);
+        Route::post('/create', [InscriptionsController::class, 'store']);
     });
 });
 
