@@ -11,7 +11,7 @@ use Illuminate\Validation\Rules\Password;
 class UserController extends Controller {
     
     public function index(){
-        $users = User::where('id','!=',Auth::id())->get();
+        $users = User::where('id','!=',Auth::id())->latest()->get();
         return view('admin.users.index', ['users' => $users]);
     }
 

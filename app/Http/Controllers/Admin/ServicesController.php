@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
 class ServicesController extends Controller {
     
     public function index(){
-        $services = Service::all();
+        $services = Service::latest()->get();
         return view('admin.services.index', ['services' => $services]);
     }
 

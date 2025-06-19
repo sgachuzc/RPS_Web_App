@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class InscriptionsController extends Controller {
     
     public function index(){
-        $inscriptions = Inscription::all();
+        $inscriptions = Inscription::latest()->get();
         return view('admin.inscriptions.index', ['inscriptions' => $inscriptions]);
     }
 
