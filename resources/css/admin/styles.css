@@ -73,3 +73,11 @@
 .input_datetime:focus{
   border: 1px solid var(--color-purple);
 }
+.delete_button{
+  background-color: #c1443c;
+  border: 1px solid #c1443c;
+}
+.delete_button:hover{
+  background-color: #c1443c;
+  border: 1px solid #c1443c;
+}
