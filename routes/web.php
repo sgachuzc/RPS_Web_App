@@ -15,12 +15,14 @@ Route::prefix('adminonline')->group(function(){
     Route::get('/', [AdminController::class, 'adminOnline'])->name('login')->middleware('guest');
     Route::get('/index', [AdminController::class, 'index'])->middleware('auth');
     
-    Route::get('/usuarios', [UserController::class, 'index'])->middleware('auth');
-    Route::get('/crear_usuario', [UserController::class, 'create'])->middleware('auth');
-    Route::post('/crear_usuario', [UserController::class, 'store'])->middleware('auth');
-    Route::get('/usuarios/{user}/editar', [UserController::class, 'edit'])->middleware('auth');
-    Route::patch('/usuarios/{user}', [UserController::class, 'update'])->middleware('auth');
-    Route::delete('/usuarios/{user}', [UserController::class, 'delete'])->middleware('auth');
+    Route::prefix('users')->middleware('auth')->group(function(){
+        Route::get('/', [UserController::class, 'index']);
+        Route::get('/create', [UserController::class, 'create']);
+        Route::post('/create', [UserController::class, 'store']);
+        Route::get('/{user}/edit', [UserController::class, 'edit']);
+        Route::patch('/{user}', [UserController::class, 'update']);
+        Route::delete('/{user}', [UserController::class, 'delete']);
+    });
 
     Route::prefix('services')->middleware('auth')->group(function(){
         Route::get('/', [ServicesController::class, 'index']);

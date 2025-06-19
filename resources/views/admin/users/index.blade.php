@@ -1,6 +1,6 @@
 <x-admin-layout>
   <section class="section_container">
-    <x-ui.table id="usuarios" title="Usuarios" link="/adminonline/crear_usuario">
+    <x-ui.table id="usuarios" title="Usuarios" link="/adminonline/users/create">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -15,12 +15,12 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>
-              <a href="/adminonline/usuarios/{{ $user->id }}/editar">
+              <a href="/adminonline/users/{{ $user->id }}/edit">
                 <img src="{{ Vite::asset('resources/images/icon_update.svg') }}" alt="Editar">
               </a>
             </td>
             <td>
-              <form method="post" action="/adminonline/usuarios/{{ $user->id }}">
+              <form method="post" action="/adminonline/users/{{ $user->id }}">
                 @csrf
                 @method('delete')
                 <button class="delete_button" type="submit">

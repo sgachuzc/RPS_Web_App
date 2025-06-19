@@ -1,16 +1,17 @@
 <x-admin-layout>
   <section class="section_container">
     <x-ui.heading>
-      Crear usuario
+      Editar usuario
     </x-ui.heading>
   </section>
   <section class="section_container">
-    <form method="POST" action="/adminonline/crear_usuario">
+    <form method="POST" action="/adminonline/users/{{ $user->id }}">
       @csrf
-      <x-ui.form-field type="text" name="name">
+      @method("patch")
+      <x-ui.form-field type="text" name="name" :active="false" value="{{ $user->name }}">
         Nombre completo
       </x-ui.form-field>
-      <x-ui.form-field type="email" name="email">
+      <x-ui.form-field type="email" name="email" value="{{ $user->email }}">
         Correo electrónico
       </x-ui.form-field>
       <x-ui.form-field type="password" name="password">
@@ -20,7 +21,7 @@
         Confirma tu contraseña
       </x-ui.form-field>
       <x-ui.button type="submit">
-        Registrar usuario
+        Actualizar usuario
       </x-ui.button>
     </form>
   </section>

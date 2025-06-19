@@ -12,11 +12,11 @@ class UserController extends Controller {
     
     public function index(){
         $users = User::where('id','!=',Auth::id())->get();
-        return view('admin.users', ['users' => $users]);
+        return view('admin.users.index', ['users' => $users]);
     }
 
     public function create(){
-        return view('admin.users_create');
+        return view('admin.users.create');
     }
 
     public function store(Request $request){
@@ -27,11 +27,11 @@ class UserController extends Controller {
         ]);
 
         User::create($params);
-        return redirect('/adminonline/usuarios')->with('success', 'Usuario creado correctamente');
+        return redirect('/adminonline/users')->with('success', 'Usuario creado correctamente');
     }
 
     public function edit(User $user){
-        return view('admin.users_edit', ['user' => $user]);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     public function update(User $user){
@@ -45,11 +45,11 @@ class UserController extends Controller {
             'password' => request('password')
         ]);
     
-        return redirect('/adminonline/usuarios');
+        return redirect('/adminonline/users');
     }
 
     public function delete(User $user){
         $user->delete();
-        return redirect('/adminonline/usuarios');
+        return redirect('/adminonline/users');
     }
 }

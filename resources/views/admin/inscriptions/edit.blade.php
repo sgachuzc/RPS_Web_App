@@ -30,7 +30,7 @@
         <x-ui.button type="submit">
           Guardar
         </x-ui.button>
-        <button class="generic_button delete_button" type="submit" form="delete_form">
+        <button class="generic_button delete_button_form" type="submit" form="delete_form">
           Cancelar inscripción
         </button>
       </div>
