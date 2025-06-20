@@ -2,21 +2,31 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ChartHelper;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Password;
-use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class AdminController extends Controller {
+
+    protected ChartHelper $chartHelper;
+
+    public function __construct(
+        ChartHelper $chartHelper
+    ){
+        $this->chartHelper = $chartHelper;
+    }
     
     public function adminOnline(Request $request){
         return view('admin.login');
     }
 
     public function index(){
-        return view('admin.index');
+        $topCourses = $this->chartHelper->getTopServices('Curso');
+        $topAuditories = $this->chartHelper->getTopServices('Auditoría');
+        return view('admin.index', [
+            'topCourses' => $topCourses,
+            'topAuditories' => $topAuditories
+        ]);
     }
 
 }
