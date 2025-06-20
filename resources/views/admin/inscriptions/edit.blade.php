@@ -1,4 +1,30 @@
 <x-admin-layout>
+  @if ($inscription->status != 'Finalizado')
+  <section>
+    <x-ui.heading>
+      Actualizar estatus
+    </x-ui.heading>
+    <form class="form_status_update" action="/adminonline/inscriptions/{{ $inscription->id }}/status" method="POST">
+      @csrf
+      @method('patch')
+      <p>
+        Estatus actual: <span>{{ $inscription->status }}</span>
+      </p>
+      <x-ui.form-select label="Actualizar estatus" name="status">
+        @if ($inscription->status == 'Inicial')
+          <option value="En curso">En curso</option>
+          <option value="Finalizado">Finalizado</option>
+        @elseif ($inscription->status == 'En curso')
+          <option value="Finalizado">Finalizado</option>
+        @endif
+      </x-ui.form-select>
+      <x-ui.button type="submit">
+        Actualizar
+      </x-ui.button>
+    </form>
+  </section>
+  <hr class="hr_section">
+  @endif
   <section class="section_container">
     <x-ui.heading>
       Modificar inscripción
@@ -28,11 +54,13 @@
       </div>
       <div class="form-double-column" style="justify-content: space-between">
         <x-ui.button type="submit">
-          Guardar
+          Guardar cambios
         </x-ui.button>
-        <button class="generic_button delete_button_form" type="submit" form="delete_form">
-          Cancelar inscripción
-        </button>
+        @if ($inscription->status != 'Finalizado')
+          <button class="generic_button delete_button_form" type="submit" form="delete_form">
+            Cancelar inscripción
+          </button>
+        @endif
       </div>
     </form>
     <form method="POST" action="/adminonline/inscriptions/{{ $inscription->id }}" class="hidden" id="delete_form">

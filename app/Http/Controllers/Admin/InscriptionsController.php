@@ -7,6 +7,7 @@ use App\Models\Inscription;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class InscriptionsController extends Controller {
     
@@ -57,6 +58,22 @@ class InscriptionsController extends Controller {
         $inscription->save();
 
         return redirect('/adminonline/inscriptions/')->with('success', 'Inscripción actualizada correctamente');
+    }
+
+    public function updateStatus(Request $request, Inscription $inscription){
+        $inscription = Inscription::findOrFail($inscription->id);
+
+        if (!$inscription) {
+            return redirect('/adminonline/inscriptions/')->with('success', 'No existe registro');
+        }
+        
+        $request->validate([
+            'status' => ['required', Rule::in(['Inicial','En curso','Finalizado'])],
+        ]);
+
+        $inscription->status = $request->status;
+        $inscription->save();
+        return redirect('/adminonline/inscriptions/')->with('success', 'Estatus actualizado');
     }
 
     public function delete(Inscription $inscription){

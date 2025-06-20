@@ -32,3 +32,8 @@ new DataTable('#servicios',{
   responsive: true,
   language: languajeOptions
 });
+
+new DataTable('#inscripciones',{
+  responsive: true,
+  language: languajeOptions
+});
