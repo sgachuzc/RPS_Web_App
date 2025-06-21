@@ -121,3 +121,12 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+.section_admin_container{
+  margin: 0 auto 20px;
+  width: 60%;
+}
+@media (width < 764px){
+  .section_admin_container{
+    width: 90%;
+  }
+}
