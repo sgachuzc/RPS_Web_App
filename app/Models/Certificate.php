@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Certificate extends Model {
     
     protected $fillable = [
-        'inscription_id',
+        'participant_id',
         'code',
         'issue_date',
         'expiry_date'
     ];
 
-    public function inscription(): BelongsTo {
-        return $this->belongsTo(Inscription::class);
+    public function participant(): BelongsTo {
+        return $this->belongsTo(Participant::class);
     }
 }

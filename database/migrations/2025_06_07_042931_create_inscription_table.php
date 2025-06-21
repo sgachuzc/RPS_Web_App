@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Customer;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -14,10 +15,9 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Service::class);
             $table->foreignIdFor(User::class);
-            $table->dateTime('application_date')->nullabe();
-            $table->string('customer');
-            $table->string('phone');
-            $table->string('email');
+            $table->foreignIdFor(Customer::class);
+            $table->dateTime('start_date')->nullabe();
+            $table->dateTime('end_date')->nullabe();
             $table->string('status')->default('Inicial');
             $table->timestamps();
         });
