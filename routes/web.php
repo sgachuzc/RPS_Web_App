@@ -6,12 +6,14 @@ use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InscriptionsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::prefix('adminonline')->group(function(){
+
     Route::get('/', [AdminController::class, 'adminOnline'])->name('login')->middleware('guest');
     Route::get('/index', [AdminController::class, 'index'])->middleware('auth');
 
@@ -48,6 +50,13 @@ Route::prefix('adminonline')->group(function(){
         Route::patch('/{inscription}/status', [InscriptionsController::class, 'updateStatus']);
         Route::delete('/{inscription}', [InscriptionsController::class, 'delete']);
     });
+});
+
+Route::prefix('password')->middleware('guest')->group(function(){
+    Route::get('/forgot', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset', [ForgotPasswordController::class, 'reset'])->name('password.update');
 });
 
 Route::post('/login', [SessionController::class, 'login']);

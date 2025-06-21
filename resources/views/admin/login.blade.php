@@ -13,6 +13,9 @@
       <x-ui.button type="submit">
         Iniciar sesión
       </x-ui.button>
+      <div style="margin-top: 2rem; text-align: right;">
+        <a style="text-decoration: none; color: var(--color-purple)" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
+      </div>
     </form>
   </div>
 </x-admin-layout>
