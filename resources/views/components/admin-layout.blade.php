@@ -16,6 +16,7 @@
       @endcan
       <x-ui.nav-link href="/adminonline/services" :active="request()->is('adminonline/services')">Servicios</x-ui.nav-link>
       <x-ui.nav-link href="/adminonline/inscriptions" :active="request()->is('adminonline/inscriptions')">Inscripciones</x-ui.nav-link>
+      <x-ui.nav-link href="/adminonline/profile" :active="request()->is('adminonline/profile')">Mi Perfil</x-ui.nav-link>
       <x-ui.nav-link href="/logout">Cerrar sesión</x-ui.nav-link>
     </x-ui.navbar>
   @endauth

@@ -14,6 +14,12 @@ Route::get('/', function () {
 Route::prefix('adminonline')->group(function(){
     Route::get('/', [AdminController::class, 'adminOnline'])->name('login')->middleware('guest');
     Route::get('/index', [AdminController::class, 'index'])->middleware('auth');
+
+    Route::middleware('auth')->group(function(){
+        Route::get('profile', [AdminController::class, 'profile']);
+        Route::patch('updateEmail', [AdminController::class, 'updateEmail']);
+        Route::patch('updatePassword', [AdminController::class, 'updatePassword']);
+    });
     
     Route::prefix('users')->middleware('auth')->can('admin')->group(function(){
         Route::get('/', [UserController::class, 'index']);
