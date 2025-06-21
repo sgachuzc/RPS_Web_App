@@ -15,7 +15,7 @@ Route::prefix('adminonline')->group(function(){
     Route::get('/', [AdminController::class, 'adminOnline'])->name('login')->middleware('guest');
     Route::get('/index', [AdminController::class, 'index'])->middleware('auth');
     
-    Route::prefix('users')->middleware('auth')->group(function(){
+    Route::prefix('users')->middleware('auth')->can('admin')->group(function(){
         Route::get('/', [UserController::class, 'index']);
         Route::get('/create', [UserController::class, 'create']);
         Route::post('/create', [UserController::class, 'store']);
