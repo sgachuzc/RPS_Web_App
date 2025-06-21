@@ -4,8 +4,8 @@
       @csrf
       <img src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="70">
       <h1>Iniciar sesión</h1>
-      <x-ui.form-field type="email" name="email">
-        Correo electrónico
+      <x-ui.form-field type="text" name="username">
+        Usuario
       </x-ui.form-field>
       <x-ui.form-field type="password" name="password">
         Contraseña

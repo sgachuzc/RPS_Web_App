@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller {
     
@@ -16,13 +19,16 @@ class UserController extends Controller {
     }
 
     public function create(){
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', ["roles" => $roles]);
     }
 
     public function store(Request $request){
         $params = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
+            'username' => ['required', 'unique:users,username'],
+            'role_id' => ['required', 'exists:roles,id'],
             'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()->symbols()],
         ]);
 
@@ -31,25 +37,30 @@ class UserController extends Controller {
     }
 
     public function edit(User $user){
-        return view('admin.users.edit', ['user' => $user]);
+        $roles = Role::all();
+        return view('admin.users.edit', [
+            'user' => $user,
+            'roles' => $roles
+        ]);
     }
 
     public function update(User $user){
-        request()->validate([
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()->symbols()],
+        $userAuthenticated = Auth::user();
+        $currentPassword = request()->input('current_password');
+        if (!Hash::check($currentPassword, $userAuthenticated->password)) {
+            throw ValidationException::withMessages([
+                "current_password" => "Contraseña incorrecta"
+            ]);
+        }
+        $params = request()->validate([
+            'role_id' => ['required', 'exists:roles,id'],
         ]);
-    
-        $user->update([
-            'email' => request('email'),
-            'password' => request('password')
-        ]);
-    
-        return redirect('/adminonline/users');
+        $user->update($params);
+        return redirect('/adminonline/users')->with('success', 'Rol de usuario actualizado correctamente');
     }
 
     public function delete(User $user){
         $user->delete();
-        return redirect('/adminonline/users');
+        return redirect('/adminonline/users')->with('success', 'Usuario eliminado correctamente');
     }
 }

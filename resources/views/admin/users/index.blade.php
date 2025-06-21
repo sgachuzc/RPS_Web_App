@@ -1,10 +1,16 @@
 <x-admin-layout>
+  @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+  @endif
   <section class="section_container">
     <x-ui.table id="usuarios" title="Usuarios" link="/adminonline/users/create">
       <thead>
         <tr>
           <th>Nombre</th>
-          <th>Email</th>
+          <th>Usuario</th>
+          <th>Rol</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
@@ -13,7 +19,8 @@
         @foreach ($users as $user)
           <tr>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
+            <td>{{ $user->username }}</td>
+            <td>{{ $user->role->name }}</td>
             <td>
               <a href="/adminonline/users/{{ $user->id }}/edit">
                 <img src="{{ Vite::asset('resources/images/icon_update.svg') }}" alt="Editar">
