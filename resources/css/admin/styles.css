@@ -9,7 +9,7 @@
 }
 .container_login form{
   background-color: #fff;
-  border: 1px solid var(--color-green);
+  border: 1px solid var(--color-purple);
   border-radius: 10px;
   padding: 20px;
   min-width: 320px;
@@ -41,7 +41,6 @@
 }
 .heading_admin{
   font-size: 20px;
-  margin-top: 10px;
 }
 .alert{
   width: 100%;
@@ -122,11 +121,44 @@
   -o-border-radius: 10px;
 }
 .section_admin_container{
+  background-color: #fff;
+  border: 1px solid var(--color-purple);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0 auto 20px;
   width: 60%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 @media (width < 764px){
   .section_admin_container{
+    width: 90%;
+  }
+}
+.profile_card{
+  background-color: #fff;
+  border: 1px solid var(--color-purple);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 60%;
+  height: auto;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.profile_card h2,
+.profile_card p{
+  margin-bottom: 10px;
+}
+@media (width < 764px){
+  .profile_card{
     width: 90%;
   }
 }

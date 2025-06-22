@@ -7,7 +7,7 @@
         Correo electrónico
       </x-ui.form-field>
       <x-ui.button type="submit">
-        Enviar enlace de restablecimiento
+        Restablecer
       </x-ui.button>
       @if (session('status'))
           <div class="alert alert-success" style="margin: 30px 0 0;">{{ session('status') }}</div>

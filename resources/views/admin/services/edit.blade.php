@@ -1,10 +1,10 @@
 <x-admin-layout>
-  <section class="section_container">
+  <section class="section_admin_container">
     <x-ui.heading>
       Actualizar servicio
     </x-ui.heading>
   </section>
-  <section class="section_container">
+  <section class="section_admin_container">
     <form method="POST" action="/adminonline/services/{{ $service->id }}">
       @csrf
       @method("patch")

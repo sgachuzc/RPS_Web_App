@@ -30,7 +30,7 @@
       </form>
     </div>
     <div class="profile_card">
-      Cambiar contraseña
+      <h2>Cambiar contraseña</h2>
       <form action="/adminonline/updatePassword" method="POST">
         @csrf
         @method('patch')

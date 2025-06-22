@@ -53,6 +53,6 @@ class ServicesController extends Controller {
 
     public function delete(Service $service){
         $service->delete();
-        return redirect('/adminonline/services');
+        return redirect('/adminonline/services')->with('success', 'Servicio eliminado correctamente');
     }
 }
