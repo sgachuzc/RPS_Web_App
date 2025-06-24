@@ -29,7 +29,7 @@ class UserController extends Controller {
             'email' => ['required', 'email', 'unique:users,email'],
             'username' => ['required', 'unique:users,username'],
             'role_id' => ['required', 'exists:roles,id'],
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()->symbols()],
+            'password' => ['required', 'confirmed', Password::min(8)->max(20)->letters()->numbers()],
         ]);
 
         User::create($params);
