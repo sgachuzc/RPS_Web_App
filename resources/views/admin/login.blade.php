@@ -1,21 +1,23 @@
 <x-admin-layout>
-  <div class="container_login">
-    <form method="post" action="/login" autocomplete="off">
-      @csrf
-      <img src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="70">
-      <h1>Iniciar sesión</h1>
-      <x-ui.form-field type="text" name="username">
-        Usuario
-      </x-ui.form-field>
-      <x-ui.form-field type="password" name="password">
-        Contraseña
-      </x-ui.form-field>
-      <x-ui.button type="submit">
-        Iniciar sesión
-      </x-ui.button>
-      <div style="margin-top: 2rem; text-align: right;">
-        <a style="text-decoration: none; color: var(--color-purple)" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
-      </div>
-    </form>
+  <div class="card mx-auto w-100 border-primary" style="max-width: 350px; margin-top: 15vh;">
+    <div class="card-body">
+      <img class="d-flex mx-auto" src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="70">
+      <h5 class="card-title mt-4 mb-4 text-center">Iniciar sesión</h5>
+      <form class="text-left needs-validation" novalidate method="POST" action="/login">
+        @csrf
+        <x-ui.form-field type="text" name="username" :isRequired="true">
+          Usuario
+        </x-ui.form-field>
+        <x-ui.form-field type="password" name="password" :isRequired="true">
+          Contraseña
+        </x-ui.form-field>
+        <div class="col-12 mb-3">
+          <button class="btn btn-primary" type="submit">Entrar</button>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+          <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
+        </div>
+      </form>
+    </div>
   </div>
 </x-admin-layout>
