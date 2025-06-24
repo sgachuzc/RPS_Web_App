@@ -11,20 +11,30 @@
 <body class="body">
   @auth
     <x-ui.admin-navbar>
-      <x-ui.admin-nav-link href="/adminonline/index" :active="request()->is('adminonline/index')" icon="home">
-        Inicio
-      </x-ui.admin-nav-link>
-      @can('admin')
-        <x-ui.admin-nav-link href="/adminonline/users" :active="request()->is('adminonline/users')" icon="folder_supervised">
-          Usuarios
-        </x-ui.admin-nav-link>
-      @endcan
-      <x-ui.admin-nav-link href="/adminonline/services" :active="request()->is('adminonline/services')" icon="apps">
-        Servicios
-      </x-ui.admin-nav-link>
-      <x-ui.admin-nav-link href="/adminonline/inscriptions" :active="request()->is('adminonline/inscriptions')">Inscripciones</x-ui.admin-nav-link>
-      <x-ui.admin-nav-link href="/adminonline/profile" :active="request()->is('adminonline/profile')">Mi Perfil</x-ui.admin-nav-link>
-      <x-ui.admin-nav-link href="/logout">Cerrar sesión</x-ui.admin-nav-link>
+      <div class="d-flex flex-column h-100" style="justify-content: space-between;">
+        <div class="row">
+          <div class="col-12">
+            <x-ui.admin-nav-link href="/adminonline/index" :active="request()->is('adminonline/index')" icon="home">
+              Inicio
+            </x-ui.admin-nav-link>
+            @can('admin')
+              <x-ui.admin-nav-link href="/adminonline/users" :active="request()->is('adminonline/users')" icon="folder_supervised">
+                Usuarios
+              </x-ui.admin-nav-link>
+            @endcan
+            <x-ui.admin-nav-link href="/adminonline/services" :active="request()->is('adminonline/services')" icon="apps">
+              Servicios
+            </x-ui.admin-nav-link>
+            <x-ui.admin-nav-link href="/adminonline/inscriptions" :active="request()->is('adminonline/inscriptions')">Inscripciones</x-ui.admin-nav-link>
+          </div>
+        </div>
+        <div class="row d-flex align-items-end">
+          <div class="col-12">
+            <x-ui.admin-nav-link href="/adminonline/profile" :active="request()->is('adminonline/profile')" icon="account_circle">Mi Perfil</x-ui.admin-nav-link>
+            <x-ui.admin-nav-link href="/logout" icon="mode_off_on">Cerrar sesión</x-ui.admin-nav-link>
+          </div>
+        </div>
+      </div>
     </x-ui.admin-navbar>
   @endauth
   <main class="container">

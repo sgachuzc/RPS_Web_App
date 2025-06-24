@@ -67,7 +67,7 @@ class AdminController extends Controller {
         }
 
         $params = $request->validate([
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()->symbols()],
+            'password' => ['required', 'confirmed', Password::min(8)->max(20)->letters()->numbers()],
         ]);
 
         $user->update($params);
