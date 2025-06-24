@@ -1,8 +1,29 @@
 import './bootstrap';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'jquery'
-import DataTable from 'datatables.net-dt';
-import 'datatables.net-responsive-dt';
+import DataTable from 'datatables.net-bs5';
+import 'datatables.net-responsive-bs5';
 import Chart from 'chart.js/auto';
+
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
 
 const languajeOptions = {
   "emptyTable":     "No hay resultados que mostrar",
@@ -24,7 +45,7 @@ const languajeOptions = {
   },
 }
 
-new DataTable('#usuarios',{
+new DataTable('#users',{
   responsive: true,
   language: languajeOptions
 });

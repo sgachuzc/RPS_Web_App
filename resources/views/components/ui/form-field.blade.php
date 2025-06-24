@@ -1,16 +1,25 @@
 @props([
-  'type',
-  'name',
-  'active' => true,
-  'value' => ''
+  'type' => 'text',
+  'name' => '',
+  'isRequired' => false,
+  'isReadonly' => false,
+  'value' => '',
 ])
 
-<div class="container_form-field">
-    <div class="wrapper_input-label">
-        <input type="{{ $type }}" class="generic_input" name="{{$name}}" id="{{ $name }}" {{ ($active) ? '' : 'readonly' }} placeholder="" autocomplete="off" required value="{{ $value }}">
-        <label for="{{ $name }}" class="generic_label">
-          {{ $slot }}
-        </label>
-    </div>
+<div class="mb-3 text-left">
+  <label for="{{ $name }}" class="form-label">{{ $slot }}</label>
+  <input 
+    class="form-control" 
+    type="{{ $type }}"
+    name="{{ $name }}" 
+    id="{{ $name }}"
+    value="{{ $value }}"
+    {{ ($isRequired) ? "required" : '' }}
+    {{ ($isReadonly) ? "readonly" : '' }}
+  >
+  @error($name)
+  <div class="mt-1" style="color:red;">
+    {{ $message }}
+  </div>
+  @enderror
 </div>
-<x-ui.form-error name="{{ $name }}" />
