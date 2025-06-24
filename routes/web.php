@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InscriptionsController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,6 +40,15 @@ Route::prefix('adminonline')->group(function(){
         Route::get('/{service}/edit', [ServicesController::class, 'edit']);
         Route::patch('/{service}', [ServicesController::class, 'update']);
         Route::delete('/{service}', [ServicesController::class, 'delete']);
+    });
+    
+    Route::prefix('customers')->middleware('auth')->group(function(){
+        Route::get('/', [CustomersController::class, 'index']);
+        Route::get('/create', [CustomersController::class, 'create']);
+        Route::post('/create', [CustomersController::class, 'store']);
+        Route::get('/{customer}/edit', [CustomersController::class, 'edit']);
+        Route::patch('/{customer}', [CustomersController::class, 'update']);
+        Route::delete('/{customer}', [CustomersController::class, 'delete']);
     });
 
     Route::prefix('inscriptions')->middleware('auth')->group(function(){

@@ -55,6 +55,11 @@ new DataTable('#servicios',{
   language: languajeOptions
 });
 
+new DataTable('#customers',{
+  responsive: true,
+  language: languajeOptions
+});
+
 new DataTable('#inscripciones',{
   responsive: true,
   language: languajeOptions

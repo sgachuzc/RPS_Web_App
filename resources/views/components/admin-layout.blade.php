@@ -25,6 +25,7 @@
             <x-ui.admin-nav-link href="/adminonline/services" :active="request()->is('adminonline/services')" icon="apps">
               Servicios
             </x-ui.admin-nav-link>
+            <x-ui.admin-nav-link href="/adminonline/customers" :active="request()->is('adminonline/inscriptions')" icon="person">Clientes</x-ui.admin-nav-link>
             <x-ui.admin-nav-link href="/adminonline/inscriptions" :active="request()->is('adminonline/inscriptions')">Inscripciones</x-ui.admin-nav-link>
           </div>
         </div>
