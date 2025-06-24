@@ -8,11 +8,11 @@
     <x-ui.table id="inscripciones" title="Inscripciones" link="/adminonline/inscriptions/create">
       <thead>
         <tr>
-          <th>Cliente</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
           <th>Inscrito a</th>
-          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Fechas</th>
+          <th>Correo</th>
+          <th>Invitados</th>
           <th>Estatus</th>
           <th>Modificar</th>
         </tr>

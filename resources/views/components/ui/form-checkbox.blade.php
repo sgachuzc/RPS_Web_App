@@ -1,15 +1,17 @@
 @props([
   'name' => '',
-  'checked' => false
+  'isChecked' => false,
 ])
 
-@php
-  $isChecked = ($checked) ? 'checked' : '';
-@endphp
-
-<div class="container_form-checkbox">
-  <label for="{{ $name }}">
+<div class="form-check">
+  <input 
+    class="form-check-input" 
+    type="checkbox" 
+    name="{{ $name }}" 
+    id="{{ $name }}"
+    {{ ($isChecked) ? 'checked' : '' }}
+  >
+  <label class="form-check-label" for="{{ $name }}">
     {{ $slot }}
   </label>
-  <input class="form-checkbox" type="checkbox" name="{{ $name }}" id="{{ $name }}" {{ $isChecked }}>
 </div>

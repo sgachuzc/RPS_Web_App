@@ -1,53 +1,58 @@
 <x-admin-layout>
   @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+    <x-ui.alert>
+      {{ session('success') }}
+    </x-ui.alert>
   @endif
-  <section class="section_container">
-    <x-ui.table id="servicios" title="Servicios" link="/adminonline/services/create">
-      <thead>
+  <x-ui.admin-title href="/adminonline/services/create">
+    Servicios
+  </x-ui.admin-title>
+  <x-ui.admin-divider />
+  <x-ui.admin-table id="servicios">
+    <thead class="table-light text-center">
+      <tr class="table-primary">
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Habilitado</th>
+        <th>Destacado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      @foreach ($services as $service)
         <tr>
-          <th>Nombre</th>
-          <th>Tipo</th>
-          <th>Habilitado</th>
-          <th>Destacado</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($services as $service)
-          <tr>
-            <td>{{ $service->name }}</td>
-            <td>{{ $service->type}}</td>
-            <td>
-              <img src="{{ ($service->available === 1) ? Vite::asset('resources/images/icon_enabled.svg') : Vite::asset('resources/images/icon_disabled.svg') }}" alt="Habilitado">
-            </td>
-            <td>
-              @if ($service->featured === 1)
-                <img src="{{ Vite::asset('resources/images/icon_featured.svg') }}" alt="Destacado">
-              @else
-                -
-              @endif
-            </td>
-            <td>
-              <a href="/adminonline/services/{{ $service->id }}/edit">
-                <img src="{{ Vite::asset('resources/images/icon_update.svg') }}" alt="Editar">
+          <td>{{ $service->name }}</td>
+          <td>{{ $service->type}}</td>
+          <td>
+            @if ($service->available === 1)
+              <x-ui.icon icon="visibility"/>
+            @else
+              <x-ui.icon icon="disabled_visible"/>
+            @endif
+          </td>
+          <td>
+            @if ($service->featured === 1)
+              <x-ui.icon icon="pages"/>
+            @else
+              <x-ui.icon icon=""/>
+            @endif
+          </td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Acciones">
+              <a class="btn btn-outline-warning" style="height: 38px" href="/adminonline/services/{{ $service->id }}/edit">
+                <x-ui.icon icon="edit"/>
               </a>
-            </td>
-            <td>
               <form method="post" action="/adminonline/services/{{ $service->id }}">
                 @csrf
                 @method('delete')
-                <button class="delete_button" type="submit">
-                  <img src="{{ Vite::asset('resources/images/icon_delete.svg') }}" alt="Eliminar">
+                <button class="btn btn-outline-danger btn-delete" type="submit">
+                  <x-ui.icon icon="delete"/>
                 </button>
               </form>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </x-ui.table>
-  </section>
+            </div>
+          </td>
+        </tr>
+      @endforeach
+    </tbody>
+  </x-ui.admin-table>
 </x-admin-layout>
