@@ -1,71 +1,58 @@
+@php
+  $minDate = now()->format('Y-m-d');;
+@endphp
 <x-admin-layout>
-  @if ($inscription->status != 'Finalizado')
-  <section>
-    <x-ui.heading>
-      Actualizar estatus
-    </x-ui.heading>
-    <form class="form_status_update" action="/adminonline/inscriptions/{{ $inscription->id }}/status" method="POST">
+  <x-ui.admin-form-card icon="checkbook" title="Actualizar estatus">
+    <form class="needs-validation" novalidate method="POST" action="/adminonline/inscriptions/{{ $inscription->id }}/status">
       @csrf
       @method('patch')
-      <p>
-        Estatus actual: <span>{{ $inscription->status }}</span>
-      </p>
-      <x-ui.form-select label="Actualizar estatus" name="status">
-        @if ($inscription->status == 'Inicial')
-          <option value="En curso">En curso</option>
-          <option value="Finalizado">Finalizado</option>
-        @elseif ($inscription->status == 'En curso')
-          <option value="Finalizado">Finalizado</option>
+      <x-ui.form-select label="Estatus" name="status" :isRequired="true">
+        <option value="">Seleccione...</option>
+        @if ($inscription->status === $statusStart)
+          <option value="ACTIVO">Activo</option>
+          <option value="CONCLUIDO">Concluido</option>
+        @elseif ($inscription->status === $statusInProgress)
+          <option value="CONCLUIDO">Concluido</option>
+        @else
+          <option value="CONCLUIDO">Concluido</option>
         @endif
       </x-ui.form-select>
-      <x-ui.button type="submit">
-        Actualizar
-      </x-ui.button>
+      <x-ui.form-field type="password" name="current_password" :isRequired="true">
+        Contraseña
+      </x-ui.form-field>
+      <div class="form-text mb-2">
+        Ingrese su contraseña para confirmar
+      </div>
+      <div class="col-12 mt-2 mb-3">
+        <button class="btn btn-primary" type="submit">Actualizar</button>
+      </div>
     </form>
-  </section>
-  <hr class="hr_section">
-  @endif
-  <section class="section_container">
-    <x-ui.heading>
-      Modificar inscripción
-    </x-ui.heading>
-  </section>
-  <section class="section_container">
-    <form method="POST" action="/adminonline/inscriptions/{{ $inscription->id }}">
+  </x-ui.admin-form-card>
+  <x-ui.admin-form-card icon="checkbook" title="Actualizar fechas de registro">
+    <form class="needs-validation" novalidate method="POST" action="/adminonline/inscriptions/{{ $inscription->id }}/dates">
       @csrf
       @method('patch')
-      <x-ui.form-field type="text" name="customer" value="{{ $inscription->customer }}" :active="false">
-        Nombre completo
-      </x-ui.form-field>
-      <div class="form-double-column" style="margin-bottom: 0;">
-        <x-ui.form-field type="tel" name="phone" value="{{ $inscription->phone }}">
-          Teléfono
-        </x-ui.form-field>
-        <x-ui.form-field type="email" name="email" value="{{ $inscription->email }}">
-          Correo electrónico
-        </x-ui.form-field>
+      <div class="row">
+        <div class="col">
+          <x-ui.form-field type="date" name="start_date" :isRequired="true" min="{{ $minDate }}" value="{{ $inscription->start_date }}">
+            Fecha de inicio
+          </x-ui.form-field>
+        </div>
+        <div class="col">
+          <x-ui.form-field type="date" name="end_date" :isRequired="true" min="{{ $minDate }}" value="{{ $inscription->end_date }}">
+            Fecha de termino
+          </x-ui.form-field>
+        </div>
       </div>
-      <x-ui.form-field type="text" name="service_id" value="{{ $inscription->service->name }}" :active="false">
-        Inscrito a
+      <x-ui.form-field type="password" name="current_password_dates" :isRequired="true">
+        Contraseña
       </x-ui.form-field>
-      <div class="form-datetime" style="margin-bottom: 30px">
-        <label for="application_date">Fecha de aplicación</label>
-        <input class="input_datetime" type="datetime-local" name="application_date" id="application_date" value="{{ $inscription->application_date }}">
+      <div class="form-text mb-2">
+        Ingrese su contraseña para confirmar
       </div>
-      <div class="form-double-column" style="justify-content: space-between">
-        <x-ui.button type="submit">
-          Guardar cambios
-        </x-ui.button>
-        @if ($inscription->status != 'Finalizado')
-          <button class="generic_button delete_button_form" type="submit" form="delete_form">
-            Cancelar inscripción
-          </button>
-        @endif
+      <div class="col-12 mt-2 mb-3">
+        <button class="btn btn-primary" type="submit">Actualizar</button>
       </div>
     </form>
-    <form method="POST" action="/adminonline/inscriptions/{{ $inscription->id }}" class="hidden" id="delete_form">
-      @csrf
-      @method("DELETE")
-    </form>
-  </section>
+  </x-ui.admin-form-card>
 </x-admin-layout>

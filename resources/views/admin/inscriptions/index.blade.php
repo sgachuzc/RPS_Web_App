@@ -1,52 +1,65 @@
 <x-admin-layout>
   @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+    <x-ui.alert>
+      {{ session('success') }}
+    </x-ui.alert>
   @endif
-  <section class="section_container">
-    <x-ui.table id="inscripciones" title="Inscripciones" link="/adminonline/inscriptions/create">
-      <thead>
+  <x-ui.admin-title href="/adminonline/inscriptions/create">
+    Inscripciones
+  </x-ui.admin-title>
+  <x-ui.admin-divider />
+  <x-ui.admin-table id="inscriptions">
+    <thead class="table-light text-center">
+      <tr class="table-primary">
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Servicio</th>
+        <th>Fecha</th>
+        <th>Estatus</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      @foreach ($inscriptions as $inscription)
         <tr>
-          <th>Inscrito a</th>
-          <th>Cliente</th>
-          <th>Fechas</th>
-          <th>Correo</th>
-          <th>Invitados</th>
-          <th>Estatus</th>
-          <th>Modificar</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($inscriptions as $inscription)
+          <td>{{ $inscription->id }}</td>
+          <td>{{ $inscription->customer->name }}</td>
+          <td>{{ $inscription->service->name}}</td>
           @php
-            if($inscription->status == 'Inicial'){
-              $color = '#6070cf';
-            }elseif ($inscription->status == 'En curso') {
-              $color = '#1d1e4a';
-            }else {
-              $color = '#71c39a';
-            }
+            $startDate = \Carbon\Carbon::parse($inscription->start_date)->translatedFormat('d F');
+            $endDate = \Carbon\Carbon::parse($inscription->end_date)->translatedFormat('d F');
           @endphp
-          <tr>
-            <td>{{ $inscription->customer }}</td>
-            <td>{{ $inscription->phone }}</td>
-            <td>{{ $inscription->email }}</td>
-            <td>{{ $inscription->service->type }}: {{ $inscription->service->name }}</td>
-            <td>{{ $inscription->application_date}}</td>
-            <td>
-              <div class="status_container" style="background-color: {{ $color }};">
-                {{ $inscription->status }}
-              </div>
-            </td>
-            <td>
-              <a href="/adminonline/inscriptions/{{ $inscription->id }}/edit">
-                <img src="{{ Vite::asset('resources/images/icon_update.svg') }}" alt="Editar">
+          <td>{{ $startDate }} - {{ $endDate }}</td>
+          <td>
+            @if ($inscription->status === $statusStart)
+              <div class="text-primary-emphasis bg-primary-subtle rounded-3">{{ $inscription->status }}</div>
+            @elseif ($inscription->status === $statusInProgress)
+              <div class="text-primary-emphasis bg-warning-subtle rounded-3">{{ $inscription->status }}</div>
+            @else
+              <div class="text-primary-emphasis bg-success-subtle rounded-3">{{ $inscription->status }}</div>
+            @endif
+          </td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Acciones">
+              <a class="btn btn-outline-info" style="height: 38px" href="/adminonline/inscriptions/{{ $inscription->id }}/edit">
+                <x-ui.icon icon="document_search"/>
               </a>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </x-ui.table>
-  </section>
+              @if ($inscription->status != $statusFinal)
+              <a class="btn btn-outline-warning" style="height: 38px" href="/adminonline/inscriptions/{{ $inscription->id }}/edit">
+                <x-ui.icon icon="edit"/>
+              </a>
+              @endif
+              <form method="post" action="/adminonline/inscriptions/{{ $inscription->id }}">
+                @csrf
+                @method('delete')
+                <button class="btn btn-outline-danger btn-delete" type="submit">
+                  <x-ui.icon icon="delete"/>
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      @endforeach
+    </tbody>
+  </x-ui.admin-table>
 </x-admin-layout>
