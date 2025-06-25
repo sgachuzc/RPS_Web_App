@@ -50,7 +50,7 @@ new DataTable('#users',{
   language: languajeOptions
 });
 
-new DataTable('#servicios',{
+new DataTable('#services',{
   responsive: true,
   language: languajeOptions
 });
@@ -60,7 +60,7 @@ new DataTable('#customers',{
   language: languajeOptions
 });
 
-new DataTable('#inscripciones',{
+new DataTable('#inscriptions',{
   responsive: true,
   language: languajeOptions
 });

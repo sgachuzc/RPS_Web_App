@@ -1,6 +1,7 @@
 @props([
   'type' => 'text',
   'name' => '',
+  'min' => '',
   'isRequired' => false,
   'isReadonly' => false,
   'value' => '',
@@ -16,6 +17,7 @@
     value="{{ $value }}"
     {{ ($isRequired) ? "required" : '' }}
     {{ ($isReadonly) ? "readonly" : '' }}
+     {{ $min !== '' ? "min=$min" : '' }}
   >
   @error($name)
   <div class="mt-1" style="color:red;">

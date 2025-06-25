@@ -1,38 +1,37 @@
+@php
+  $minDate = now()->format('Y-m-d');;
+@endphp
 <x-admin-layout>
-  <section class="section_container">
-    <x-ui.heading>
-      Inscripción
-    </x-ui.heading>
-  </section>
-  <section class="section_container">
-    <form method="POST" action="/adminonline/inscriptions/create">
+  <x-ui.admin-form-card icon="checkbook" title="Inscripción">
+    <form class="needs-validation" novalidate method="POST" action="/adminonline/inscriptions/create">
       @csrf
-      <x-ui.form-field type="text" name="customer">
-        Nombre completo
-      </x-ui.form-field>
-      <div class="form-double-column">
-        <x-ui.form-field type="tel" name="phone">
-          Teléfono
-        </x-ui.form-field>
-        <x-ui.form-field type="email" name="email">
-          Correo electrónico
-        </x-ui.form-field>
-      </div>
-      <div class="form-double-column">
-        <x-ui.form-select name="service_id" label="Servicio seleccionado">
-          <option value="">Seleccionar</option>
-          @foreach ($services as $service)
-            <option value="{{ $service->id }}">{{ $service->name }}</option>
-          @endforeach
-        </x-ui.form-select>
-        <div class="form-datetime">
-          <label for="application_date">Fecha de aplicación</label>
-          <input class="input_datetime" type="datetime-local" name="application_date" id="application_date">
+      <x-ui.form-select label="Cliente a inscribir" name="customer_id" :isRequired="true">
+        <option value="">Seleccione un cliente</option>
+        @foreach ($customers as $customer)
+          <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+        @endforeach
+      </x-ui.form-select>
+      <x-ui.form-select label="Servicio a inscribir" name="service_id" :isRequired="true">
+        <option value="">Seleccione un servicio disponible</option>
+        @foreach ($services as $service)
+          <option value="{{ $service->id }}">{{ $service->name }}</option>
+        @endforeach
+      </x-ui.form-select>
+      <div class="row">
+        <div class="col">
+          <x-ui.form-field type="date" name="start_date" :isRequired="true" min="{{ $minDate }}">
+            Fecha de inicio
+          </x-ui.form-field>
+        </div>
+        <div class="col">
+          <x-ui.form-field type="date" name="end_date" :isRequired="true" min="{{ $minDate }}">
+            Fecha de termino
+          </x-ui.form-field>
         </div>
       </div>
-      <x-ui.button type="submit">
-        Guardar
-      </x-ui.button>
+      <div class="col-12 mt-2 mb-3">
+        <button class="btn btn-primary" type="submit">Registrar</button>
+      </div>
     </form>
-  </section>
+  </x-ui.admin-form-card>
 </x-admin-layout>

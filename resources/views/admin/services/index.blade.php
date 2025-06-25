@@ -8,7 +8,7 @@
     Servicios
   </x-ui.admin-title>
   <x-ui.admin-divider />
-  <x-ui.admin-table id="servicios">
+  <x-ui.admin-table id="services">
     <thead class="table-light text-center">
       <tr class="table-primary">
         <th>Nombre</th>
