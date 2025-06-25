@@ -46,3 +46,10 @@ main{
   font-weight: 700;
   margin-bottom: 10px;
 }
+.forms_body{
+  background: #1c92d2;
+  background: -webkit-linear-gradient(to bottom, #f2fcfe, #1c92d2);
+  background: linear-gradient(to bottom, #f2fcfe, #1c92d2);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}

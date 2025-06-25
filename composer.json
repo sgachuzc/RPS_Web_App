@@ -30,7 +30,8 @@
         },
         "files": [
             "app/Helpers/ChartHelper.php",
-            "app/Helpers/CertificateHelper.php"
+            "app/Helpers/CertificateHelper.php",
+            "app/Helpers/InscriptionsHelper.php"
         ]
     },
     "autoload-dev": {

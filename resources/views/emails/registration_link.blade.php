@@ -42,7 +42,22 @@
                                 <tr>
                                     <td class="content-cell" style="max-width: 100vw; padding: 32px;">
                                         <h1 style="color: #3d4852; font-size: 18px; font-weight: bold; margin-top: 0; text-align: left;">¡Hola!</h1>
-                                        <p style="font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Recibió este correo electrónico porque recibimos una solicitud de restablecimiento de contraseña para su cuenta.</p>
+                                        <p style="font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Comparte el correo o el enlace para la inscripción de los participantes</p>
+                                        <p style="font-size: 16px; font-weight:700; line-height: 1.5em; margin-top: 0; text-align: left;">Información:</p>
+                                        <p style="font-size: 14px; font-weight:700; line-height: 1.5em; margin-top: 0; margin-bottom: 0; text-align: left;">
+                                          {{ $inscription->service->type }}: 
+                                          <span style="font-weight: 400;">{{ $inscription->service->name }}</span>
+                                        </p>
+                                        <p style="font-size: 14px; font-weight:700; line-height: 1.5em; margin-top: 0; margin-bottom: 0; text-align: left;">
+                                          Descripción: 
+                                          <span style="font-weight: 400;">{{ $inscription->service->description }}</span>
+                                        </p>
+                                        <p style="font-size: 14px; font-weight:700; line-height: 1.5em; margin-top: 0; margin-bottom: 0; text-align: left;">
+                                          Fechas: 
+                                          <span style="font-weight: 400;">
+                                            {{ \Carbon\Carbon::parse($inscription->start_date)->translatedFormat('d \d\e F'); }} - {{ \Carbon\Carbon::parse($inscription->end_date)->translatedFormat('d \d\e F');}}
+                                          </span>
+                                        </p>
                                         <table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin: 30px auto; padding: 0; text-align: center; width: 100%; float: unset;">
                                             <tr>
                                                 <td align="center">
@@ -52,7 +67,7 @@
                                                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                                                                     <tr>
                                                                         <td>
-                                                                            <a href="{{ $actionUrl }}" class="button button-primary" target="_blank" rel="noopener" style="border-radius: 4px; color: #fff; display: inline-block; overflow: hidden; text-decoration: none; background-color: #0d6efd; border-bottom: 8px solid #0d6efd; border-left: 18px solid #0d6efd; border-right: 18px solid #0d6efd; border-top: 8px solid #0d6efd; word-break: break-all;">Restablecer contraseña</a>
+                                                                            <a href="{{ $url }}" class="button button-primary" target="_blank" rel="noopener" style="border-radius: 4px; color: #fff; display: inline-block; overflow: hidden; text-decoration: none; background-color: #0d6efd; border-bottom: 8px solid #0d6efd; border-left: 18px solid #0d6efd; border-right: 18px solid #0d6efd; border-top: 8px solid #0d6efd; word-break: break-all;">Registro</a>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
@@ -62,13 +77,11 @@
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p style="font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Este enlace de restablecimiento de contraseña expirará en 60 minutos.</p>
-                                        <p style="font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Si no solicitó un restablecimiento de contraseña, no se requiere ninguna otra acción.</p>
                                         <p style="font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Gracias,<br>RPS</p>
                                         <table class="subcopy" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-top: 1px solid #e8e5ef; margin-top: 25px; padding-top: 25px;">
                                             <tr>
                                                 <td>
-                                                    <p style="line-height: 1.5em; margin-top: 0; text-align: left; font-size: 14px;">Si tiene problemas para hacer clic en el botón "Restablecer contraseña", copie y pegue la siguiente URL en su navegador web: <span class="break-all"><a href="{{ $actionUrl }}" style="color: #3869d4; word-break: break-all;">{{ $actionUrl }}</a></span></p>
+                                                    <p style="line-height: 1.5em; margin-top: 0; text-align: left; font-size: 14px;">Si tiene problemas para hacer clic en el botón "Registro", copie y pegue la siguiente URL en su navegador web: <span class="break-all"><a href="{{ $url }}" style="color: #3869d4; word-break: break-all;">{{ $url }}</a></span></p>
                                                 </td>
                                             </tr>
                                         </table>

@@ -19,6 +19,7 @@ class Inscription extends Model {
         'start_date',
         'end_date',
         'status',
+        'registration_token'
     ];
 
     public function service(): BelongsTo {

@@ -10,6 +10,7 @@ class Participant extends Model {
     use HasFactory;
 
     protected $fillable = [
+        'inscription_id',
         'name',
         'email',
         'phone',

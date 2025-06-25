@@ -7,11 +7,14 @@ use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InscriptionsController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
+Route::post('/register/{token}', [ParticipantController::class, 'register']);
 
 Route::prefix('adminonline')->group(function(){
 

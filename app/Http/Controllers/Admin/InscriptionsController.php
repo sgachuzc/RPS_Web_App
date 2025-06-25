@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\InscriptionsHelper;
 use App\Http\Controllers\Controller;
+use App\Mail\InscriptionRegistration;
 use App\Models\Customer;
 use App\Models\Inscription;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
@@ -17,6 +20,14 @@ class InscriptionsController extends Controller {
     const STATUS_START = 'INICIO';
     const STATUS_IN_PROGRESS = 'ACTIVO';
     const STATUS_FINAL = 'CONCLUIDO';
+
+    protected InscriptionsHelper $inscriptionHelper;
+
+    public function __construct(
+        InscriptionsHelper $inscriptionHelper
+    ){
+        $this->inscriptionHelper = $inscriptionHelper;
+    }
     
     public function index(){
         $inscriptions = Inscription::latest()->get();
@@ -45,7 +56,13 @@ class InscriptionsController extends Controller {
             'end_date' => ['required','date','after_or_equal:today']
         ]);
         $params['status'] = self::STATUS_START;
-        Auth::user()->inscriptions()->create($params);
+        $inscription = Auth::user()->inscriptions()->create($params);
+        $token = $this->inscriptionHelper->generateToken($inscription->id);
+        $inscription->registration_token = $token;
+        $inscription->save();
+        
+        Mail::to($inscription->customer->email)->send(new InscriptionRegistration($inscription, $this->inscriptionHelper));
+
         return redirect('/adminonline/inscriptions')->with('success','Se hizo la inscripción correctamente');
     }
 
