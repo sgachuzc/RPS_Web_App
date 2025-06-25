@@ -34,12 +34,12 @@
       @method('patch')
       <div class="row">
         <div class="col">
-          <x-ui.form-field type="date" name="start_date" :isRequired="true" min="{{ $minDate }}" value="{{ $inscription->start_date }}">
+          <x-ui.form-field type="date" name="start_date" :isRequired="true" min="{{ $minDate }}" value="{{ \Carbon\Carbon::parse($inscription->start_date)->format('Y-m-d') }}">
             Fecha de inicio
           </x-ui.form-field>
         </div>
         <div class="col">
-          <x-ui.form-field type="date" name="end_date" :isRequired="true" min="{{ $minDate }}" value="{{ $inscription->end_date }}">
+          <x-ui.form-field type="date" name="end_date" :isRequired="true" min="{{ $minDate }}" value="{{ \Carbon\Carbon::parse($inscription->end_date)->format('Y-m-d') }}">
             Fecha de termino
           </x-ui.form-field>
         </div>
