@@ -41,7 +41,7 @@
           </td>
           <td>
             <div class="btn-group" role="group" aria-label="Acciones">
-              <a class="btn btn-outline-info" style="height: 38px" href="/adminonline/inscriptions/{{ $inscription->id }}/edit">
+              <a class="btn btn-outline-info" style="height: 38px" href="/adminonline/inscriptions/{{ $inscription->id }}/details">
                 <x-ui.icon icon="document_search"/>
               </a>
               @if ($inscription->status != $statusFinal)

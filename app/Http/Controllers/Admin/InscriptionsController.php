@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\InscriptionRegistration;
 use App\Models\Customer;
 use App\Models\Inscription;
+use App\Models\Participant;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,5 +127,16 @@ class InscriptionsController extends Controller {
     public function delete(Inscription $inscription){
         $inscription->delete();
         return redirect('/adminonline/inscriptions')->with('success','Inscripción eliminada');
+    }
+
+    public function details(Inscription $inscription){
+        $startDate = \Carbon\Carbon::parse($inscription->start_date)->translatedFormat('d F');
+        $endDate = \Carbon\Carbon::parse($inscription->end_date)->translatedFormat('d F');
+        $inscriptionPreview = $inscription->service->name.': '.$startDate.' - '.$endDate;
+        $participants = Participant::where('inscription_id', $inscription->id)->get();
+        return view('admin.inscriptions.details', [
+            'preview' => $inscriptionPreview,
+            'participants' => $participants
+        ]);
     }
 }

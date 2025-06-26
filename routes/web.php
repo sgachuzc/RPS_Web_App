@@ -62,6 +62,7 @@ Route::prefix('adminonline')->group(function(){
         Route::patch('/{inscription}/status', [InscriptionsController::class, 'updateStatus']);
         Route::patch('/{inscription}/dates', [InscriptionsController::class, 'updateDates']);
         Route::delete('/{inscription}', [InscriptionsController::class, 'delete']);
+        Route::get('/{inscription}/details', [InscriptionsController::class, 'details']);
     });
 });
 
