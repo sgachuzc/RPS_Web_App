@@ -9,6 +9,7 @@ class Certificate extends Model {
     
     protected $fillable = [
         'participant_id',
+        'service_id',
         'code',
         'issue_date',
         'expiry_date'
@@ -16,5 +17,9 @@ class Certificate extends Model {
 
     public function participant(): BelongsTo {
         return $this->belongsTo(Participant::class);
+    }
+
+    public function service(): BelongsTo {
+        return $this->belongsTo(Service::class);
     }
 }
