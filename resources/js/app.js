@@ -25,14 +25,6 @@ import Chart from 'chart.js/auto';
     })
 })()
 
-$(function() {
-  $('form').on('submit', function() {
-    var $btn = $(this).find('button[type="submit"]');
-    $btn.prop('disabled', true);
-    $btn.text('Procesando...');
-  });
-});
-
 const languajeOptions = {
   "emptyTable":     "No hay resultados que mostrar",
   "info":           "_START_ - _END_ de _TOTAL_ resultados",
