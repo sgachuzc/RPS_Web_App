@@ -62,7 +62,7 @@ class InscriptionsController extends Controller {
         $inscription->registration_token = $token;
         $inscription->save();
         
-        Mail::to($inscription->customer->email)->send(new InscriptionRegistration($inscription, $this->inscriptionHelper));
+        Mail::to($inscription->customer->email)->queue(new InscriptionRegistration($inscription, $this->inscriptionHelper));
 
         return redirect('/adminonline/inscriptions')->with('success','Se hizo la inscripción correctamente');
     }
