@@ -12,7 +12,8 @@ class Certificate extends Model {
         'service_id',
         'code',
         'issue_date',
-        'expiry_date'
+        'expiry_date',
+        'sent'
     ];
 
     public function participant(): BelongsTo {

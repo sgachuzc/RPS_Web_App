@@ -18,7 +18,7 @@
         <th>Nombre</th>
         <th>Correo electónico</th>
         <th>Teléfono</th>
-        <th></th>
+        <th>Certificado</th>
       </tr>
     </thead>
     <tbody class="text-center">
@@ -27,7 +27,16 @@
           <td>{{ $participant->name }}</td>
           <td>{{ $participant->email }}</td>
           <td>{{ $participant->phone }}</td>
-          <td>Entregar</td>
+          <td>
+            @if ($participant->certificate && $participant->certificate->sent)
+              <x-ui.icon icon="check"/>
+            @else
+              <form action="{{ route('certificates.deliver', [$participant->id, $service->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-success btn-sm">Entregar</button>
+              </form>
+            @endif
+          </td>
         </tr>
       @endforeach
     </tbody>

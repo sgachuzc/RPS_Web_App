@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SessionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InscriptionsController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,8 @@ Route::prefix('adminonline')->group(function(){
         Route::delete('/{inscription}', [InscriptionsController::class, 'delete']);
         Route::get('/{inscription}/details', [InscriptionsController::class, 'details']);
     });
+
+    Route::post('/certificates/deliver/{participant}/{service}', [CertificatesController::class, 'deliver'])->name('certificates.deliver');
 });
 
 Route::prefix('password')->middleware('guest')->group(function(){

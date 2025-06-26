@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CertificateHelper {
@@ -11,11 +10,11 @@ class CertificateHelper {
   const codeLength = 25; // Length of the generated code
 
   public function generateCode(int $certificateId): string {
-    return '';
+    return $certificateId.''.Str::random(self::codeLength);
   }
 
   public function generateExpirationDate(): string {
-    return '';
+    return now()->addMonths(self::duration)->toDateString();
   }
 
 }

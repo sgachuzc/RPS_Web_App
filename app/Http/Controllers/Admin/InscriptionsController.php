@@ -133,10 +133,14 @@ class InscriptionsController extends Controller {
         $startDate = \Carbon\Carbon::parse($inscription->start_date)->translatedFormat('d F');
         $endDate = \Carbon\Carbon::parse($inscription->end_date)->translatedFormat('d F');
         $inscriptionPreview = $inscription->service->name.': '.$startDate.' - '.$endDate;
+
+        $service = $inscription->service;
         $participants = Participant::where('inscription_id', $inscription->id)->get();
+        
         return view('admin.inscriptions.details', [
             'preview' => $inscriptionPreview,
-            'participants' => $participants
+            'participants' => $participants,
+            'service' => $service
         ]);
     }
 }
