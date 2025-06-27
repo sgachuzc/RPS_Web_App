@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Certificate;
 use Illuminate\Support\Str;
 
 class CertificateHelper {
@@ -15,6 +16,17 @@ class CertificateHelper {
 
   public function generateExpirationDate(): string {
     return now()->addMonths(self::duration)->toDateString();
+  }
+
+  public function validateCertificate(string $code){
+    $certificate = Certificate::where('code', $code)->first();
+
+    if (!$certificate) {
+      return false;
+    }
+
+    $now = now();
+    return ($now->lessThanOrEqualTo($certificate->expiry_date)) ? true : false;
   }
 
 }

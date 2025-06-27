@@ -8,5 +8,17 @@
 </head>
 <body>
     Hola
+
+    @if (session('success'))
+    <x-ui.alert>
+      {{ session('success') }}
+    </x-ui.alert>
+  @endif
+
+    <form action="/certificates/validate" method="post">
+        @csrf
+        <input type="text" name="code">
+        <button type="submit">Validar</button>
+    </form>
 </body>
 </html>

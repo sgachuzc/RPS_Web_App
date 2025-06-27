@@ -7,6 +7,7 @@ use App\Mail\CertificateMail;
 use App\Models\Certificate;
 use App\Models\Participant;
 use App\Models\Service;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class CertificatesController extends Controller {
@@ -38,5 +39,21 @@ class CertificatesController extends Controller {
         ));
 
         return back()->with('success', 'Certificado generado, se entregará por correo en unos momentos.');
+    }
+
+    public function validate(Request $request){
+        $param = $request->validate([
+            'code' => ['required', 'exists:certificates,code']
+        ]);
+
+        $code = $param['code'];
+
+        $isOnTime = $this->certificateHelper->validateCertificate($code);
+
+        if ($isOnTime) {
+            return redirect()->back()->with('success', 'Tu certificado aún tiene validez');
+        } else {
+            return redirect()->back()->with('success', 'Tu certificado ha vencido');
+        }
     }
 }

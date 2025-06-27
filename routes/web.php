@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
 Route::post('/register/{token}', [ParticipantController::class, 'register']);
 
+Route::post('/certificates/validate', [CertificatesController::class, 'validate']);
+
 Route::prefix('adminonline')->group(function(){
 
     Route::get('/', [AdminController::class, 'adminOnline'])->name('login')->middleware('guest');
