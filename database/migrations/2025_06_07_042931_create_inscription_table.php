@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->dateTime('start_date')->nullabe();
             $table->dateTime('end_date')->nullabe();
             $table->string('status')->default('Inicial');
+            $table->string('registration_token')->unique()->nullable();
             $table->timestamps();
         });
     }
