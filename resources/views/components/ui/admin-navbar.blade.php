@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar bg-light fixed-top">
+  <nav class="navbar bg-light border-bottom fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/adminonline/index">
         <img src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="50">

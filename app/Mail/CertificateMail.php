@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Certificate;
+use App\Models\Comment;
 use App\Models\Participant;
 use App\Models\Service;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -19,15 +20,18 @@ class CertificateMail extends Mailable implements ShouldQueue {
     use Queueable, SerializesModels;
 
     protected Certificate $certificate;
+    protected Comment $comment;
     protected Participant $participant;
     protected Service $service;
 
     public function __construct(
         Certificate $certificate,
+        Comment $comment,
         Participant $participant,
         Service $service
     ){
         $this->certificate = $certificate;
+        $this->comment = $comment;
         $this->participant = $participant;
         $this->service = $service;
     }
@@ -39,12 +43,14 @@ class CertificateMail extends Mailable implements ShouldQueue {
     }
 
     public function content(): Content {
+        $url = url('/comments/'.$this->comment->token);
         return new Content(
             view: 'emails.certificate',
             with: [
                 'certificate' => $this->certificate,
                 'participant' => $this->participant,
-                'service' => $this->service
+                'service' => $this->service,
+                'url' => $url
             ]
         );
     }

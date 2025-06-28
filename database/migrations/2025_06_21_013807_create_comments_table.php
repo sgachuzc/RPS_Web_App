@@ -12,14 +12,15 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Inscription::class);
             $table->foreignIdFor(Participant::class);
-            $table->string('question_1');
-            $table->string('question_2');
-            $table->string('question_3');
-            $table->string('question_4');
-            $table->string('question_5');
-            $table->string('question_6');
-            $table->string('question_7');
-            $table->bigInteger('rating')->default(0);
+            $table->string('question_1')->nullable();
+            $table->string('question_2')->nullable();
+            $table->string('question_3')->nullable();
+            $table->string('question_4')->nullable();
+            $table->string('question_5')->nullable();
+            $table->string('question_6')->nullable();
+            $table->string('question_7')->nullable();
+            $table->string('question_8')->nullable();
+            $table->string('token')->unique();
             $table->timestamps();
         });
     }

@@ -59,7 +59,7 @@
                                                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                                                                     <tr>
                                                                         <td>
-                                                                            <a href="#" class="button button-primary" target="_blank" rel="noopener" style="border-radius: 4px; color: #fff; display: inline-block; overflow: hidden; text-decoration: none; background-color: #0d6efd; border-bottom: 8px solid #0d6efd; border-left: 18px solid #0d6efd; border-right: 18px solid #0d6efd; border-top: 8px solid #0d6efd; word-break: break-all;">Contestar encuesta</a>
+                                                                            <a href="{{ $url }}" class="button button-primary" target="_blank" rel="noopener" style="border-radius: 4px; color: #fff; display: inline-block; overflow: hidden; text-decoration: none; background-color: #0d6efd; border-bottom: 8px solid #0d6efd; border-left: 18px solid #0d6efd; border-right: 18px solid #0d6efd; border-top: 8px solid #0d6efd; word-break: break-all;">Contestar encuesta</a>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
@@ -73,7 +73,7 @@
                                         <table class="subcopy" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-top: 1px solid #e8e5ef; margin-top: 25px; padding-top: 25px;">
                                             <tr>
                                                 <td>
-                                                    <p style="line-height: 1.5em; margin-top: 0; text-align: left; font-size: 14px;">Si tiene problemas para hacer clic en el botón "Contestar encuesta", copie y pegue la siguiente URL en su navegador web: <span class="break-all"><a href="#" style="color: #3869d4; word-break: break-all;">#</a></span></p>
+                                                    <p style="line-height: 1.5em; margin-top: 0; text-align: left; font-size: 14px;">Si tiene problemas para hacer clic en el botón "Contestar encuesta", copie y pegue la siguiente URL en su navegador web: <span class="break-all"><a href="{{ $url }}" style="color: #3869d4; word-break: break-all;">{{ $url }}</a></span></p>
                                                 </td>
                                             </tr>
                                         </table>

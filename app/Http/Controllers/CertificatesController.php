@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\CertificateHelper;
 use App\Mail\CertificateMail;
 use App\Models\Certificate;
+use App\Models\Comment;
 use App\Models\Participant;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -32,8 +33,15 @@ class CertificatesController extends Controller {
             'expiry_date' => $this->certificateHelper->generateExpirationDate(),
         ]);
 
+        $comment = Comment::create([
+            'inscription_id' => $participant->inscription->id,
+            'participant_id' => $participant->id,
+            'token' => $certificate->code
+        ]);
+
         Mail::to($participant->email)->queue(new CertificateMail(
             $certificate,
+            $comment,
             $participant,
             $service
         ));

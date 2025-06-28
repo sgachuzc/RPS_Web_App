@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InscriptionsController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CertificatesController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,9 @@ Route::get('/', function () {
 });
 Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
 Route::post('/register/{token}', [ParticipantController::class, 'register']);
+
+Route::get('/comments/{token}', [CommentsController::class, 'showForm']);
+Route::patch('/comments/{token}', [CommentsController::class, 'store']);
 
 Route::post('/certificates/validate', [CertificatesController::class, 'validate']);
 

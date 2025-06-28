@@ -22,12 +22,13 @@
   --color-blue: #1d1e4a;
 }
 body.body{
-  background-color: #fff;
+  background-color: #E2F3F5;
   display: grid !important;
   grid-template-rows: 70px 1fr auto;
   min-height: 100dvh;
   user-select: none;
-   overflow: auto !important;
+  overflow: auto !important;
+  color: #0E153A;
 }
 main{
   width: 90%;
