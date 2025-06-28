@@ -10,7 +10,14 @@
       <li class="breadcrumb-item active" aria-current="page">{{ $preview }}</li>
     </ol>
   </nav>
-  <h1 class="mb-0">Participantes</h1>
+  <div class="row">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="mb-0">Participantes</h1>
+      <a class="btn btn-primary d-flex align-items-center justify-content-around gap-2" href="{{ route('inscriptions.results', ['inscription' => $inscription->id]) }}">
+        Ver resultados
+      </a>
+    </div>
+  </div>
   <x-ui.admin-divider />
   <x-ui.admin-table id="inscriptions">
     <thead class="table-light text-center">

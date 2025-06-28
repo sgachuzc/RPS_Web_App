@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ChartHelper;
 use App\Helpers\InscriptionsHelper;
 use App\Http\Controllers\Controller;
 use App\Mail\InscriptionRegistration;
@@ -23,11 +24,14 @@ class InscriptionsController extends Controller {
     const STATUS_FINAL = 'CONCLUIDO';
 
     protected InscriptionsHelper $inscriptionHelper;
+    protected ChartHelper $chartHelper;
 
     public function __construct(
-        InscriptionsHelper $inscriptionHelper
+        InscriptionsHelper $inscriptionHelper,
+        ChartHelper $chartHelper
     ){
         $this->inscriptionHelper = $inscriptionHelper;
+        $this->chartHelper = $chartHelper;
     }
     
     public function index(){
@@ -138,9 +142,38 @@ class InscriptionsController extends Controller {
         $participants = Participant::where('inscription_id', $inscription->id)->get();
         
         return view('admin.inscriptions.details', [
+            'inscription' => $inscription,
             'preview' => $inscriptionPreview,
             'participants' => $participants,
             'service' => $service
+        ]);
+    }
+    
+    public function results(Inscription $inscription){
+        $startDate = \Carbon\Carbon::parse($inscription->start_date)->translatedFormat('d F');
+        $endDate = \Carbon\Carbon::parse($inscription->end_date)->translatedFormat('d F');
+        $inscriptionPreview = $inscription->service->name.': '.$startDate.' - '.$endDate;
+
+        $resultsQ1 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_1');
+        $resultsQ2 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_2');
+        $resultsQ3 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_3');
+        $resultsQ4 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_4');
+        $resultsQ5 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_5');
+        $resultsQ6 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_6');
+        $resultsQ7 = $this->chartHelper->getInscriptionsOpenQuestions($inscription->id, 'question_7');
+        $resultsQ8 = $this->chartHelper->getInscriptionsOpenQuestions($inscription->id, 'question_8');
+
+        return view('admin.inscriptions.results', [
+            'inscription' => $inscription,
+            'preview' => $inscriptionPreview,
+            'resultsQ1' => $resultsQ1,
+            'resultsQ2' => $resultsQ2,
+            'resultsQ3' => $resultsQ3,
+            'resultsQ4' => $resultsQ4,
+            'resultsQ5' => $resultsQ5,
+            'resultsQ6' => $resultsQ6,
+            'resultsQ7' => $resultsQ7,
+            'resultsQ8' => $resultsQ8,
         ]);
     }
 }

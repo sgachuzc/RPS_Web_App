@@ -128,3 +128,195 @@ new DataTable('#inscriptions',{
     }
   );
 })();
+
+(async function() {
+  const data = window.resultsQ1 || [];
+
+  new Chart(
+    document.getElementById('resultsQ1'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.answer),
+        datasets: [
+          {
+            label: 'Respuestas a: Modalidad',
+            data: data.map(row => row.count)
+          }
+        ]
+      },
+      options:{
+        responsive: true,
+        scales: {
+          y:{
+            beginAtZero: true,
+            ticks:{
+              stepSize: 1,
+              precision: 0
+            }
+          }
+        }
+      }
+    }
+  );
+})();
+
+(async function() {
+  const data = window.resultsQ2 || [];
+
+  new Chart(
+    document.getElementById('resultsQ2'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.answer),
+        datasets: [
+          {
+            label: '¿Qué tan satisfecho/a estás con el contenido del curso?',
+            data: data.map(row => row.count)
+          }
+        ]
+      },
+      options:{
+        responsive: true,
+        scales: {
+          y:{
+            beginAtZero: true,
+            ticks:{
+              stepSize: 1,
+              precision: 0
+            }
+          }
+        }
+      }
+    }
+  );
+})();
+
+(async function() {
+  const data = window.resultsQ3 || [];
+
+  new Chart(
+    document.getElementById('resultsQ3'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.answer),
+        datasets: [
+          {
+            label: '¿Qué tan satisfecho/a estás con el contenido del curso?',
+            data: data.map(row => row.count)
+          }
+        ]
+      },
+      options:{
+        responsive: true,
+        scales: {
+          y:{
+            beginAtZero: true,
+            ticks:{
+              stepSize: 1,
+              precision: 0
+            }
+          }
+        }
+      }
+    }
+  );
+})();
+
+(async function() {
+  const data = window.resultsQ4 || [];
+
+  new Chart(
+    document.getElementById('resultsQ4'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.answer),
+        datasets: [
+          {
+            label: '¿El contenido cubrió tus expectativas y necesidades?',
+            data: data.map(row => row.count)
+          }
+        ]
+      },
+      options:{
+        responsive: true,
+        scales: {
+          y:{
+            beginAtZero: true,
+            ticks:{
+              stepSize: 1,
+              precision: 0
+            }
+          }
+        }
+      }
+    }
+  );
+})();
+
+(async function() {
+  const data = window.resultsQ5 || [];
+
+  new Chart(
+    document.getElementById('resultsQ5'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.answer),
+        datasets: [
+          {
+            label: '¿Consideras que los temas tratados fueron claros y bien explicados?',
+            data: data.map(row => row.count)
+          }
+        ]
+      },
+      options:{
+        responsive: true,
+        scales: {
+          y:{
+            beginAtZero: true,
+            ticks:{
+              stepSize: 1,
+              precision: 0
+            }
+          }
+        }
+      }
+    }
+  );
+})();
+
+(async function() {
+  const data = window.resultsQ6 || [];
+
+  new Chart(
+    document.getElementById('resultsQ6'),
+    {
+      type: 'bar',
+      data: {
+        labels: data.map(row => row.answer),
+        datasets: [
+          {
+            label: '¿Cómo calificarías el desempeño del instructor?',
+            data: data.map(row => row.count)
+          }
+        ]
+      },
+      options:{
+        responsive: true,
+        scales: {
+          y:{
+            beginAtZero: true,
+            ticks:{
+              stepSize: 1,
+              precision: 0
+            }
+          }
+        }
+      }
+    }
+  );
+})();
