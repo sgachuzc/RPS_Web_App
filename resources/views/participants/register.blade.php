@@ -38,7 +38,7 @@
             Teléfono
           </x-ui.form-field>
           <div class="col-12 mt-2 mb-3">
-            <button class="btn btn-primary" type="submit">Registrar</button>
+            <button class="btn button_custom_primary w-100" type="submit">Registrate</button>
           </div>
         </form>
       </div>

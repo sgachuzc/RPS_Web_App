@@ -30,7 +30,7 @@
         Ingrese su contraseña para confirmar
       </div>
       <div class="col-12 mt-4 mb-3">
-        <button class="btn btn-primary" type="submit">Guardar</button>
+        <button class="btn button_custom_primary w-100" type="submit">Actualizar</button>
       </div>
     </form>
   </x-ui.admin-form-card>

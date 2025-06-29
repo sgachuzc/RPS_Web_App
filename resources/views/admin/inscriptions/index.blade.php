@@ -9,8 +9,8 @@
   </x-ui.admin-title>
   <x-ui.admin-divider />
   <x-ui.admin-table id="inscriptions">
-    <thead class="table-light text-center">
-      <tr class="table-primary">
+    <thead class="table-dark">
+      <tr>
         <th>ID</th>
         <th>Cliente</th>
         <th>Servicio</th>
@@ -19,7 +19,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody class="text-center">
+    <tbody class="text-center" style="vertical-align: middle;">
       @foreach ($inscriptions as $inscription)
         <tr>
           <td>{{ $inscription->id }}</td>

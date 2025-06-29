@@ -9,8 +9,8 @@
   </x-ui.admin-title>
   <x-ui.admin-divider/>
   <x-ui.admin-table id="customers">
-    <thead class="table-light text-center">
-      <tr class="table-primary">
+    <thead class="table-dark">
+      <tr>
         <th>Nombre</th>
         <th>Correo</th>
         <th>Teléfono</th>

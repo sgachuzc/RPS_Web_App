@@ -10,7 +10,7 @@
   <x-ui.admin-divider />
   <div class="row">
     <div class="col-12 col-md-6 mx-auto">
-      <div class="accordion  w-100 mx-auto" id="accordionCharts">
+      <div class="accordion w-100 mx-auto" id="accordionCharts">
         <x-ui.accordion-item target="question1" title="Pregunta 1">
           <div class="chart">
             <canvas id="resultsQ1"></canvas>
@@ -37,17 +37,12 @@
           </div>
         </x-ui.accordion-item>
         <x-ui.accordion-item target="question6" title="Pregunta 6">
-          <div class="chart">
-            <canvas id="resultsQ6"></canvas>
-          </div>
-        </x-ui.accordion-item>
-        <x-ui.accordion-item target="question7" title="Pregunta 7">
-          @foreach ($resultsQ7 as $key => $answer)
+          @foreach ($resultsQ6 as $key => $answer)
             <p class="mb-2"><span>{{ $key + 1 }}.-</span> {{ $answer }}</p>
           @endforeach
         </x-ui.accordion-item>
-        <x-ui.accordion-item target="question8" title="Pregunta 8">
-          @foreach ($resultsQ8 as $key => $answer)
+        <x-ui.accordion-item target="question7" title="Pregunta 7">
+          @foreach ($resultsQ7 as $key => $answer)
             <p class="mb-2"><span>{{ $key + 1 }}.-</span> {{ $answer }}</p>
           @endforeach
         </x-ui.accordion-item>
@@ -61,5 +56,4 @@
   window.resultsQ3 = @json($resultsQ3);
   window.resultsQ4 = @json($resultsQ4);
   window.resultsQ5 = @json($resultsQ5);
-  window.resultsQ6 = @json($resultsQ6);
 </script>

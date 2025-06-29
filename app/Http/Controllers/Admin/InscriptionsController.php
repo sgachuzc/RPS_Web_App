@@ -159,9 +159,8 @@ class InscriptionsController extends Controller {
         $resultsQ3 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_3');
         $resultsQ4 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_4');
         $resultsQ5 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_5');
-        $resultsQ6 = $this->chartHelper->getInscriptionQuestionsCounts($inscription->id, 'question_6');
+        $resultsQ6 = $this->chartHelper->getInscriptionsOpenQuestions($inscription->id, 'question_6');
         $resultsQ7 = $this->chartHelper->getInscriptionsOpenQuestions($inscription->id, 'question_7');
-        $resultsQ8 = $this->chartHelper->getInscriptionsOpenQuestions($inscription->id, 'question_8');
 
         return view('admin.inscriptions.results', [
             'inscription' => $inscription,
@@ -173,7 +172,6 @@ class InscriptionsController extends Controller {
             'resultsQ5' => $resultsQ5,
             'resultsQ6' => $resultsQ6,
             'resultsQ7' => $resultsQ7,
-            'resultsQ8' => $resultsQ8,
         ]);
     }
 }

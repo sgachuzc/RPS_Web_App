@@ -9,9 +9,9 @@
   </x-ui.admin-title>
   <x-ui.admin-divider />
   <x-ui.admin-table id="users">
-    <thead class="table-light text-center">
-      <tr class="table-primary">
-        <th>ID</th>
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
         <th>Usuario</th>
         <th>Rol</th>
         <th></th>

@@ -135,7 +135,7 @@ new DataTable('#inscriptions',{
   new Chart(
     document.getElementById('resultsQ1'),
     {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.map(row => row.answer),
         datasets: [
@@ -167,7 +167,7 @@ new DataTable('#inscriptions',{
   new Chart(
     document.getElementById('resultsQ2'),
     {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.map(row => row.answer),
         datasets: [
@@ -199,7 +199,7 @@ new DataTable('#inscriptions',{
   new Chart(
     document.getElementById('resultsQ3'),
     {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.map(row => row.answer),
         datasets: [
@@ -231,7 +231,7 @@ new DataTable('#inscriptions',{
   new Chart(
     document.getElementById('resultsQ4'),
     {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.map(row => row.answer),
         datasets: [
@@ -263,7 +263,7 @@ new DataTable('#inscriptions',{
   new Chart(
     document.getElementById('resultsQ5'),
     {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.map(row => row.answer),
         datasets: [
@@ -295,7 +295,7 @@ new DataTable('#inscriptions',{
   new Chart(
     document.getElementById('resultsQ6'),
     {
-      type: 'bar',
+      type: 'pie',
       data: {
         labels: data.map(row => row.answer),
         datasets: [

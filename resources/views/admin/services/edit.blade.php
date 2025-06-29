@@ -11,7 +11,7 @@
         </div>
         <div class="col">
           <x-ui.form-field type="text" name="subtitle" value="{{ $service->subtitle }}">
-            Subtitulo
+            Subtitulo <span style="color: grey; font-size: 12px">(Opcional)</span>
           </x-ui.form-field>
         </div>
       </div>
@@ -36,7 +36,7 @@
         {{$service->description}}
       </x-ui.form-textarea>
       <div class="col-12 mt-2 mb-3">
-        <button class="btn btn-primary" type="submit">Guardar</button>
+        <button class="btn button_custom_primary w-100" type="submit">Actualizar</button>
       </div>
     </form>
   </x-ui.admin-form-card>

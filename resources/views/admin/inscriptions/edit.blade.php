@@ -24,7 +24,7 @@
         Ingrese su contraseña para confirmar
       </div>
       <div class="col-12 mt-2 mb-3">
-        <button class="btn btn-primary" type="submit">Actualizar</button>
+        <button class="btn button_custom_primary w-100" type="submit">Actualizar</button>
       </div>
     </form>
   </x-ui.admin-form-card>
@@ -51,7 +51,7 @@
         Ingrese su contraseña para confirmar
       </div>
       <div class="col-12 mt-2 mb-3">
-        <button class="btn btn-primary" type="submit">Actualizar</button>
+        <button class="btn button_custom_primary w-100" type="submit">Actualizar</button>
       </div>
     </form>
   </x-ui.admin-form-card>

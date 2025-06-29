@@ -12,31 +12,79 @@
   font-family: "Josefin Sans", sans-serif;
   outline: none;
 
-  --color-purple: #6070cf;
-  --color-dark-purple: #4d5ab5;
-  --color-light-purple: #7c7ba0;
-  --color-white: #f1f4f8;
-  --color-green: #71c39a;
-  --color-light-green: #b6ebb7;
-  --color-gray: #c6d2db;
-  --color-blue: #1d1e4a;
+  --green: #007642;
+  --light-green: #009655;
+  --white: #fff;
+  --grey: #f0f0f0;
+  --black: #180000;
 }
 body.body{
-  background-color: #E2F3F5;
+  background-color: var(--grey);
   display: grid !important;
   grid-template-rows: 70px 1fr auto;
   min-height: 100dvh;
   user-select: none;
   overflow: auto !important;
-  color: #0E153A;
+  color: var(--black);
 }
 main{
   width: 90%;
   margin: 20px auto;
 }
-.active{
-  color: var(--bs-primary) !important;
+.text-primary{
+  color: var(--green) !important;
 }
+.border-primary{
+  border: 1px solid var(--green) !important;
+}
+.form-control:focus,
+.form-select:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: var(--light-green) !important;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+}
+.form-check-input:checked {
+  background-color: var(--light-green);
+  border-color: var(--light-green);
+}
+.button_custom_primary{
+  background-color: var(--green);
+  border: 1px solid var(--green);
+  color: var(--white);
+}
+.button_custom_primary:hover,
+.button_custom_primary:active{
+  background-color: var(--light-green) !important;
+  border: 1px solid var(--light-green) !important;
+  color: var(--white) !important;
+}
+.button_custom_primary:focus-visible{
+  background-color: var(--light-green);
+  border: 1px solid var(--light-green);
+  color: var(--white);
+  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+}
+.button_custom_secondary{
+  background-color: var(--white);
+  border: 1px solid var(--green);
+  color: var(--green);
+}
+.button_custom_secondary:hover,
+.button_custom_secondary:active{
+  background-color: var(--light-green) !important;
+  border: 1px solid var(--light-green) !important;
+  color: var(--white) !important;
+}
+.button_custom_secondary:focus-visible{
+  background-color: var(--light-green);
+  border: 1px solid var(--light-green);
+  color: var(--white);
+  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+}
+
+
 .btn-delete{
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -48,9 +96,9 @@ main{
   margin-bottom: 10px;
 }
 .forms_body{
-  background: #1c92d2;
-  background: -webkit-linear-gradient(to bottom, #f2fcfe, #1c92d2);
-  background: linear-gradient(to bottom, #f2fcfe, #1c92d2);
+  background: #4AC29A;
+  background: -webkit-linear-gradient(to top, #BDFFF3, #4AC29A);
+  background: linear-gradient(to top, #BDFFF3, #4AC29A);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  height: auto;
 }

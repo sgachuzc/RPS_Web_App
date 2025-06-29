@@ -2,7 +2,7 @@
   <div class="card mx-auto w-100 border-primary" style="max-width: 350px; margin-top: 10vh;">
     <div class="card-body">
       <img class="d-flex mx-auto" src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="70">
-      <h5 class="card-title mt-4 mb-4 text-center">Restablecer contraseña</h5>
+      <h5 class="card-title mt-4 mb-4 text-center text-primary">Restablecer contraseña</h5>
       <form class="text-left needs-validation" novalidate method="POST" action="{{ route('password.update') }}">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
@@ -19,7 +19,7 @@
           Confirmar nueva contraseña
         </x-ui.form-field>
         <div class="col-12 mb-3">
-          <button class="btn btn-primary" type="submit">Restablecer</button>
+          <button class="btn btn-primary button_custom_primary w-100" type="submit">Restablecer</button>
         </div>
       </form>
     </div>
