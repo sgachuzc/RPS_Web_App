@@ -27,6 +27,11 @@
             </x-ui.admin-nav-link>
             <x-ui.admin-nav-link href="/adminonline/customers" :active="request()->is('adminonline/customers')" icon="person">Clientes</x-ui.admin-nav-link>
             <x-ui.admin-nav-link href="/adminonline/inscriptions" :active="request()->is('adminonline/inscriptions')" icon="checkbook">Inscripciones</x-ui.admin-nav-link>
+            @can('admin')
+              <x-ui.admin-nav-link href="/adminonline/configurations" :active="request()->is('adminonline/configurations')" icon="build">
+                Configuraciones
+              </x-ui.admin-nav-link>
+            @endcan
           </div>
         </div>
         <div class="row d-flex align-items-end">

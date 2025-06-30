@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ConfigurationsController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SessionController;
@@ -74,6 +75,11 @@ Route::prefix('adminonline')->group(function(){
     });
 
     Route::post('/certificates/deliver/{participant}/{service}', [CertificatesController::class, 'deliver'])->name('certificates.deliver');
+
+    Route::prefix('configurations')->middleware('auth')->can('admin')->group(function(){
+        Route::get('/', [ConfigurationsController::class, 'index']);
+        Route::patch('/store', [ConfigurationsController::class, 'store']);
+    });
 });
 
 Route::prefix('password')->middleware('guest')->group(function(){

@@ -2,10 +2,19 @@
 
 namespace App\Helpers;
 
+use App\Http\Controllers\Admin\ConfigurationsController;
 use App\Models\Certificate;
 use Illuminate\Support\Str;
 
 class CertificateHelper {
+
+  protected ConfigurationsController $configController;
+
+  public function __construct(
+    ConfigurationsController $configController
+  ){
+    $this->configController = $configController;
+  }
 
   const duration = 12; // Duration in months
   const codeLength = 25; // Length of the generated code
@@ -15,7 +24,9 @@ class CertificateHelper {
   }
 
   public function generateExpirationDate(): string {
-    return now()->addMonths(self::duration)->toDateString();
+    $configTime = $this->configController->getConfiguration('certificate_validity_time');
+    $months = ($configTime) ? $configTime : self::duration;
+    return now()->addMonths($months)->toDateString();
   }
 
   public function validateCertificate(string $code){
