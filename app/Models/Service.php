@@ -26,4 +26,8 @@ class Service extends Model {
     public function inscriptions(): HasMany {
         return $this->hasMany(Inscription::class);
     }
+
+    public function contacts(): HasMany {
+        return $this->hasMany(Contact::class);
+    }
 }
