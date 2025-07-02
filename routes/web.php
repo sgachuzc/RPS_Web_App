@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\InscriptionsController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,6 +80,11 @@ Route::prefix('adminonline')->group(function(){
     Route::prefix('configurations')->middleware('auth')->can('admin')->group(function(){
         Route::get('/', [ConfigurationsController::class, 'index']);
         Route::patch('/store', [ConfigurationsController::class, 'store']);
+    });
+
+    Route::prefix('contacts')->middleware('auth')->group(function(){
+        Route::get('/', [ContactsController::class, 'adminIndex'])->name('admin.contacts.index');
+        Route::delete('/{contact}', [ContactsController::class, 'delete']);
     });
 });
 
