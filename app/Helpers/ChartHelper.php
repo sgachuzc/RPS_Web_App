@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class ChartHelper {
 
-  public function getTopServices(string $type): Collection {
+  public function getTopServices(): Collection {
     $topServices = Service::withCount('inscriptions')
-      ->where('type', $type)
       ->orderByDesc('inscriptions_count')
       ->take(5)
       ->get();

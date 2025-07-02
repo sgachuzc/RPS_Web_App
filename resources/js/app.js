@@ -66,49 +66,17 @@ new DataTable('#inscriptions',{
 });
 
 (async function() {
-  const data = window.topCourses || [];
+  const data = window.topServices || [];
 
   new Chart(
-    document.getElementById('topCourses'),
+    document.getElementById('topServices'),
     {
       type: 'bar',
       data: {
         labels: data.map(row => row.name),
         datasets: [
           {
-            label: 'Cursos más suscritos',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
-            }
-          }
-        }
-      }
-    }
-  );
-})();
-
-(async function() {
-  const data = window.topAuditories || [];
-
-  new Chart(
-    document.getElementById('topAuditories'),
-    {
-      type: 'bar',
-      data: {
-        labels: data.map(row => row.name),
-        datasets: [
-          {
-            label: 'Auditorías más suscritas',
+            label: 'Servicios más suscritos',
             data: data.map(row => row.count)
           }
         ]

@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ChartHelper;
+use App\Http\Controllers\Admin\InscriptionsController;
 use App\Http\Controllers\Controller;
+use App\Models\Certificate;
+use App\Models\Customer;
+use App\Models\Inscription;
+use App\Models\Participant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,11 +31,24 @@ class AdminController extends Controller {
     }
 
     public function index(){
-        $topCourses = $this->chartHelper->getTopServices('Curso');
-        $topAuditories = $this->chartHelper->getTopServices('Auditoría');
+        $topServices = $this->chartHelper->getTopServices();
+        $nextInscriptions = Inscription::where('status', InscriptionsController::STATUS_START)
+            ->where('start_date', '>=', Carbon::now())
+            ->orderBy('start_date', 'asc')
+            ->limit(5)
+            ->get();
+        $totalCustomers = Customer::count();
+        $totalCompletedInscriptions = Inscription::where('status', InscriptionsController::STATUS_FINAL)->count();
+        $totalParticipants = Participant::count();
+        $totalCertificates = Certificate::count();
+
         return view('admin.index', [
-            'topCourses' => $topCourses,
-            'topAuditories' => $topAuditories
+            'nextInscriptions' => $nextInscriptions,
+            'totalCustomers' => $totalCustomers,
+            'totalCompletedInscriptions' => $totalCompletedInscriptions,
+            'totalParticipants' => $totalParticipants,
+            'totalCertificates' => $totalCertificates,
+            'topServices' => $topServices
         ]);
     }
 

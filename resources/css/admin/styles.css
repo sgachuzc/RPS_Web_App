@@ -36,3 +36,8 @@
   max-width: 320px;
   width: 100%;
 }
+@media (width > 720px){
+  .card-chart{
+    height: 500px;
+  }
+}
