@@ -1,10 +1,11 @@
 @props([
   'icon' => '',
   'title' => '',
+  'grid' => false
 ])
 
 <div class="row mb-5">
-  <div class="col-12 col-md-6 mx-auto">
+  <div class="col-12 {{ ($grid) ? '' : 'col-md-6' }} mx-auto">
     <div class="card w-100 mx-auto">
       <div class="card-header d-flex align-items-center gap-2">
         <x-ui.icon icon="{{ $icon }}"/>
