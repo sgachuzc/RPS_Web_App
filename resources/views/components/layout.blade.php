@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <title>RPS</title>
+</head>
+<body>
+  <x-ui.navbar>
+    <x-ui.nav_links href="/" :active="request()->is('/')">Inicio</x-ui.nav_links>
+    <x-ui.nav_links href="/servicios" :active="request()->is('servicios')">Servicios</x-ui.nav_links>
+    <x-ui.nav_links href="/nosotros" :active="request()->is('nosotros')">Nosotros</x-ui.nav_links>
+    <x-ui.nav_links href="/contacto" :active="request()->is('contacto')">Contacto</x-ui.nav_links>
+  </x-ui.navbar>
+  <main style="width: 100%; margin: 0; overflow:hidden; background-color: var(--fourth)">
+    {{ $slot }}
+  </main>
+</body>
+</html>
