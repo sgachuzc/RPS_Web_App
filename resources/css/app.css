@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'aos/dist/aos.css';
 @import url('datatables.net-bs5');
 @import url('datatables.net-responsive-bs5');
 @import url('./components/ui/mini-footer.css');
@@ -136,11 +137,40 @@ figure{
   width: 80%;
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
+.offer_container{
+  height: 425px;
+}
+.offer_card{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
+}
+.public-data-card{
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
+  transition: all 0.3s ease;
+}
+.public-data-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+.card_icon span{
+  color: var(--second);
+  font-size: 42px;
+}
+.purecounter{
+  color: var(--primary);
+  font-size: 32px;
+}
+.card_data p{
+  font-size: 16px;
+}
 
 @media (width < 768px){
   .section_hero .row{
     flex-direction: column-reverse;
     height: auto !important;
+  }
+  .offer_container{
+    height: auto;
   }
 }
 
