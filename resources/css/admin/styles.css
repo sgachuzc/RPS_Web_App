@@ -1,40 +1,53 @@
 .nav_custom{
-  background-color: var(--green) !important;
-  color: var(--white);
+  background-color: var(--primary) !important;
+  color: var(--fifth);
 }
 .navbar-toggler-icon{
   filter: invert(1) !important;
   -webkit-filter: invert(1) !important;
 }
 .offcanvas{
-  background-color: var(--grey) !important;
+  background-color: var(--primary) !important;
+  color: var(--fifth);
+}
+.nav_custom .nav-link{
+  color: var(--fifth);
 }
 .active{
-  color: var(--green) !important;
+  color: var(--third) !important;
 }
 .card{
-  border: 1px solid var(--green);
+  border: 1px solid var(--third);
+}
+.dt-paging-button.page-item button{
+  color: var(--primary);
 }
 .dt-paging-button.page-item.active button{
-  background-color: var(--green) !important;
-  border-color: var(--green);
-  color: var(--white) !important;
+  background-color: var(--second) !important;
+  border-color: var(--second);
+  color: var(--fifth) !important;
 }
 .dt-paging-button.page-item.active button:hover{
-  background-color: var(--light-green) !important;
-  border-color: var(--light-green);
-  color: var(--white) !important;
+  background-color: var(--fifth) !important;
+  border-color: var(--third);
+  color: var(--third) !important;
 }
 .accordion-button:focus{
-  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+  box-shadow: 0 0 0 .25rem rgba(25, 25, 25, .25) !important;
 }
 .accordion-button:not(.collapsed){
-  color: var(--white);
-  background-color: var(--light-green);
+  color: var(--fifth);
+  background-color: var(--second);
 }
 .chart{
   max-width: 320px;
   width: 100%;
+}
+ul.pagination a.page-link{
+  color: var(--primary);
+}
+ul.pagination a.page-link:focus{
+  box-shadow: 0 0 0 .25rem rgba(25, 25, 25, .25) !important;
 }
 @media (width > 720px){
   .card-chart{

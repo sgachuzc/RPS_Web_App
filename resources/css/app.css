@@ -5,6 +5,7 @@
 @import url('datatables.net-responsive-bs5');
 @import url('./components/ui/mini-footer.css');
 @import url('./admin/styles.css');
+@import url('./components/ui/navbar.css');
 
 *, ::after, ::before{
   margin: 0;
@@ -12,76 +13,80 @@
   font-family: "Josefin Sans", sans-serif;
   outline: none;
 
-  --green: #007642;
-  --light-green: #009655;
-  --white: #fff;
-  --grey: #f0f0f0;
-  --black: #180000;
+  --primary: #151515;
+  --second: #A91D3A;
+  --third: #C73659;
+  --fourth: #EEEEEE;
+  --fifth: #fff;
 }
 body.body{
-  background-color: var(--grey);
+  background-color: var(--fourth);
   display: grid !important;
   grid-template-rows: 70px 1fr auto;
   min-height: 100dvh;
   user-select: none;
   overflow: auto !important;
-  color: var(--black);
+  color: var(--primary);
 }
 main{
   width: 90%;
   margin: 20px auto;
 }
+figure{
+  margin: 0;
+}
 .text-primary{
-  color: var(--green) !important;
+  color: var(--second) !important;
 }
 .border-primary{
-  border: 1px solid var(--green) !important;
+  border: 1px solid var(--second) !important;
 }
 .form-control:focus,
 .form-select:focus {
-  color: var(--bs-body-color);
-  background-color: var(--bs-body-bg);
-  border-color: var(--light-green) !important;
+  color: var(--primary);
+  background-color: var(--fifth);
+  border-color: var(--primary) !important;
   outline: 0;
-  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+  box-shadow: 0 0 0 .25rem rgba(21, 21, 21, .25) !important;
 }
 .form-check-input:checked {
-  background-color: var(--light-green);
-  border-color: var(--light-green);
+  background-color: var(--second);
+  border-color: var(--second);
 }
 .button_custom_primary{
-  background-color: var(--green);
-  border: 1px solid var(--green);
-  color: var(--white);
+  background-color: var(--second);
+  border: 2px solid var(--second);
+  color: var(--fifth);
+  padding: 10px 15px;
 }
 .button_custom_primary:hover,
 .button_custom_primary:active{
-  background-color: var(--light-green) !important;
-  border: 1px solid var(--light-green) !important;
-  color: var(--white) !important;
+  background-color: var(--fifth) !important;
+  border: 2px solid var(--second) !important;
+  color: var(--third) !important;
 }
 .button_custom_primary:focus-visible{
-  background-color: var(--light-green);
-  border: 1px solid var(--light-green);
-  color: var(--white);
-  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+  background-color: var(--fifth);
+  border: 2px solid var(--second);
+  color: var(--third);
+  box-shadow: 0 0 0 .25rem rgba(25, 25, 25, .25) !important;
 }
 .button_custom_secondary{
-  background-color: var(--white);
-  border: 1px solid var(--green);
-  color: var(--green);
+  background-color: var(--fifth);
+  border: 2px solid var(--second);
+  color: var(--second);
 }
 .button_custom_secondary:hover,
 .button_custom_secondary:active{
-  background-color: var(--light-green) !important;
-  border: 1px solid var(--light-green) !important;
-  color: var(--white) !important;
+  background-color: var(--primary) !important;
+  border: 2px solid var(--primary) !important;
+  color: var(--fifth) !important;
 }
 .button_custom_secondary:focus-visible{
-  background-color: var(--light-green);
-  border: 1px solid var(--light-green);
-  color: var(--white);
-  box-shadow: 0 0 0 .25rem rgba(0, 150, 81, .25) !important;
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  color: var(--fifth);
+  box-shadow: 0 0 0 .25rem rgba(25, 25, 25, .25) !important;
 }
 .btn-delete{
   border-top-left-radius: 0;
@@ -94,9 +99,9 @@ main{
   margin-bottom: 10px;
 }
 .forms_body{
-  background: #4AC29A;
-  background: -webkit-linear-gradient(to top, #BDFFF3, #4AC29A);
-  background: linear-gradient(to top, #BDFFF3, #4AC29A);
+  background: var(--fourth);
+  background: -webkit-linear-gradient(to bottom, var(--fourth), var(--fifth)); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, var(--primary), var(--fifth));
   background-repeat: no-repeat;
   height: auto;
 }
@@ -119,4 +124,31 @@ main{
 .data-card h2{
   font-size: 35px;
   margin-bottom: 0;
+}
+/* Public */
+.section_hero{
+  height: 90dvh;
+}
+.section_hero a{
+  width: max-content;
+}
+.hero_image{
+  width: 80%;
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (width < 768px){
+  .section_hero .row{
+    flex-direction: column-reverse;
+    height: auto !important;
+  }
+}
+
+@keyframes up-down{
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+      transform: translateY(-10px);
+  }
 }

@@ -2,7 +2,7 @@
   <div class="container-fluid d-flex justify-content-between">
     <h1 class="mb-0">{{ $slot }}</h1>
     <a class="btn button_custom_primary d-flex align-items-center justify-content-around gap-2" {{ $attributes }}>
-      <img src="{{ Vite::asset('resources/images/icon_new.svg') }}" alt="+">
+      <x-ui.icon icon="add_circle"/>
       Nuevo
     </a>
   </div>

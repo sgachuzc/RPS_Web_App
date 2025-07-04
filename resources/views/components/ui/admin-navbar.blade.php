@@ -2,7 +2,7 @@
   <nav class="navbar bg-dark border-bottom fixed-top nav_custom">
     <div class="container">
       <a class="navbar-brand" href="/adminonline/index">
-        <img src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="50">
+        <img src="{{ Vite::asset('resources/images/logo_white.png') }}" alt="RPS" width="100">
       </a>
       <div class="d-flex justify-content-center align-items-center gap-3">
         @auth

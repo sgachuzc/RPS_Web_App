@@ -26,6 +26,7 @@ class CertificateHelper {
   public function generateExpirationDate(): string {
     $configTime = $this->configController->getConfiguration('certificate_validity_time');
     $months = ($configTime) ? $configTime : self::duration;
+    $months = (int) $months;
     return now()->addMonths($months)->toDateString();
   }
 

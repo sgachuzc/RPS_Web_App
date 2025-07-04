@@ -1,7 +1,7 @@
 <x-admin-layout>
   <div class="card mx-auto w-100 border-primary" style="max-width: 350px; margin-top: 10vh;">
     <div class="card-body">
-      <img class="d-flex mx-auto" src="{{ Vite::asset('resources/images/rps.png') }}" alt="RPS" width="70">
+      <img class="d-flex mx-auto" src="{{ Vite::asset('resources/images/logo_black.png') }}" alt="RPS" width="100">
       <h5 class="card-title mt-4 mb-4 text-center text-primary">Restablecer contraseña</h5>
       <form class="text-left needs-validation" novalidate method="POST" action="{{ route('password.update') }}">
         @csrf

@@ -1,6 +1,6 @@
 .mini_footer{
-    background-color: var(--green);
-    color: var(--white);
+    background-color: var(--primary);
+    color: var(--fifth);
     width: 100%;
     padding: 10px;
 }
