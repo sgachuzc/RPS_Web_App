@@ -22,7 +22,7 @@ class CertificatesController extends Controller {
     }
     
     public function deliver(int $participantId, int $serviceId){
-        $participant = Participant::findOrFail($participantId);
+        $participant = Participant::with('inscription.customer', 'inscription.service')->findOrFail($participantId);
         $service = Service::findOrFail($serviceId);
 
         $certificate = Certificate::create([

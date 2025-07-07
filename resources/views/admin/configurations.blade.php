@@ -8,12 +8,6 @@
     <form class="needs-validation" novalidate method="POST" action="/adminonline/configurations/store">
       @csrf
       @method('patch')
-      <x-ui.form-field type="text" name="register_subject" :isRequired="true" :value="$settings['register_subject'] ?? ''">
-        Asunto para correo de registro a curso
-      </x-ui.form-field>
-      <x-ui.form-field type="text" name="certificate_subject" :isRequired="true" min="0" :value="$settings['certificate_subject'] ?? ''">
-        Asunto para correo de certificado
-      </x-ui.form-field>
       <x-ui.form-field type="number" name="certificate_validity_time" :isRequired="true" min="1" :value="$settings['certificate_validity_time'] ?? ''">
         Tiempo de validéz para certificado (meses)
       </x-ui.form-field>

@@ -35,7 +35,7 @@ class InscriptionsController extends Controller {
     }
     
     public function index(){
-        $inscriptions = Inscription::latest()->get();
+        $inscriptions = Inscription::with(['customer', 'service'])->latest()->get();
         return view('admin.inscriptions.index', [
             'inscriptions' => $inscriptions,
             'statusStart' => self::STATUS_START,
@@ -134,12 +134,13 @@ class InscriptionsController extends Controller {
     }
 
     public function details(Inscription $inscription){
+        $inscription->load('service');
         $startDate = \Carbon\Carbon::parse($inscription->start_date)->translatedFormat('d F');
         $endDate = \Carbon\Carbon::parse($inscription->end_date)->translatedFormat('d F');
         $inscriptionPreview = $inscription->service->name.': '.$startDate.' - '.$endDate;
 
         $service = $inscription->service;
-        $participants = Participant::where('inscription_id', $inscription->id)->get();
+        $participants = Participant::with('certificate')->where('inscription_id', $inscription->id)->get();
         
         return view('admin.inscriptions.details', [
             'inscription' => $inscription,

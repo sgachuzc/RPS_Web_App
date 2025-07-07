@@ -15,8 +15,6 @@ class ConfigurationsController extends Controller {
 
     public function store(Request $request){
         $configs = $request->validate([
-            'register_subject' => 'required|string|max:255',
-            'certificate_subject' => 'required|string|max:255',
             'certificate_validity_time' => 'required|integer|min:1',
         ]);
 

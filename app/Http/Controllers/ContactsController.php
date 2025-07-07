@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ContactsController extends Controller {
     
     public function adminIndex(){
-        $contacts = Contact::cursorPaginate(10);
+        $contacts = Contact::with('service')->cursorPaginate(10);
         return view('admin.contacts.index', ['contacts' => $contacts]);
     }
 

@@ -14,7 +14,7 @@ use Illuminate\Validation\ValidationException;
 class UserController extends Controller {
     
     public function index(){
-        $users = User::where('id','!=',Auth::id())->latest()->get();
+        $users = User::where('id','!=',Auth::id())->with('role')->latest()->get();
         return view('admin.users.index', ['users' => $users]);
     }
 
@@ -37,6 +37,7 @@ class UserController extends Controller {
     }
 
     public function edit(User $user){
+        $user->load('role');
         $roles = Role::all();
         return view('admin.users.edit', [
             'user' => $user,
