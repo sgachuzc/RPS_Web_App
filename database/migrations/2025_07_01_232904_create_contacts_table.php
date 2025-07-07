@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('phone')->nullable();
             $table->text('issue');
-            $table->foreignIdFor(Service::class);
+            $table->foreignIdFor(Service::class)->constrained();
             $table->timestamps();
         });
     }

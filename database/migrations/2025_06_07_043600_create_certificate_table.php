@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Participant::class);
-            $table->foreignIdFor(Service::class);
+            $table->foreignIdFor(Participant::class)->constrained();
+            $table->foreignIdFor(Service::class)->constrained();
             $table->string('code')->unique();
             $table->date('issue_date');
             $table->date('expiry_date')->nullable();

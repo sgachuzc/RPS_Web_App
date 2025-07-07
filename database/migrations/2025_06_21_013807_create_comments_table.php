@@ -10,8 +10,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Inscription::class);
-            $table->foreignIdFor(Participant::class);
+            $table->foreignIdFor(Inscription::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Participant::class)->constrained()->onDelete('cascade');
             $table->string('question_1')->nullable();
             $table->string('question_2')->nullable();
             $table->string('question_3')->nullable();

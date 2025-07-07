@@ -13,9 +13,9 @@ return new class extends Migration {
     {
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Service::class);
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Customer::class);
+            $table->foreignIdFor(Service::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(Customer::class)->constrained();
             $table->dateTime('start_date')->nullabe();
             $table->dateTime('end_date')->nullabe();
             $table->string('status')->default('Inicial');

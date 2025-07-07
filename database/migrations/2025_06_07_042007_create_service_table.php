@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('type')->default('Curso');
             $table->boolean('available')->default(true);
             $table->boolean('featured')->default(false);
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
