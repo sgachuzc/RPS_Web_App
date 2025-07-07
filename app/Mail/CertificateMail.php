@@ -56,10 +56,13 @@ class CertificateMail extends Mailable implements ShouldQueue {
     }
 
     public function attachments(): array {
+        $logoPath = public_path('images/logo_black.png');
+
         $pdf = Pdf::loadView('certificates.pdf', [
             'certificate' => $this->certificate,
             'participant' => $this->participant,
             'service' => $this->service,
+            'logoPath' => $logoPath
         ])->output();
 
         if (!$this->certificate->sent) {
