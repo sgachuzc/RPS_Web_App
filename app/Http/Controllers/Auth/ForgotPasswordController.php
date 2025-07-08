@@ -34,7 +34,7 @@ class ForgotPasswordController extends Controller {
             'token' => 'required',
             'email' => 'required|email|exists:users,email',
             'password' => [
-                'requited',
+                'required',
                 'confirmed',
                 RulesPassword::min(8)->max(20)->letters()->numbers()
             ],

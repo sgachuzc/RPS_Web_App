@@ -32,13 +32,13 @@ class AdminController extends Controller {
 
     public function index(){
         $topServices = $this->chartHelper->getTopServices();
-        $nextInscriptions = Inscription::where('status', InscriptionsController::STATUS_START)
+        $nextInscriptions = Inscription::with('service')->where('status', InscriptionsController::STATUS_START)
             ->where('start_date', '>=', Carbon::now())
             ->orderBy('start_date', 'asc')
             ->limit(5)
             ->get();
         $totalCustomers = Customer::count();
-        $totalCompletedInscriptions = Inscription::where('status', InscriptionsController::STATUS_FINAL)->count();
+        $totalCompletedInscriptions = Inscription::with('service')->where('status', InscriptionsController::STATUS_FINAL)->count();
         $totalParticipants = Participant::count();
         $totalCertificates = Certificate::count();
 

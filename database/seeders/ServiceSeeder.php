@@ -9,6 +9,6 @@ use Illuminate\Database\Seeder;
 class ServiceSeeder extends Seeder {
     
     public function run(): void {
-        Service::factory()->count(20)->create();
+        Service::factory()->count(5)->create();
     }
 }
