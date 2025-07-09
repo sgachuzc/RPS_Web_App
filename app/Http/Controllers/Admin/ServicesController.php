@@ -22,14 +22,17 @@ class ServicesController extends Controller {
     public function store(Request $request){
         $params = $request->validate([
             'name' => ['required'],
-            'subtitle' => ['required'],
-            'description' => ['required'],
+            'subtitle' => ['nullable', 'max:100'],
             'type' => ['required', Rule::in(['Curso', 'Auditoría'])],
+            'version' => ['nullable'],
+            'nomenclature' => ['nullable'],
+            'months_to_expire' => ['nullable','numeric'],
+            'description' => ['nullable', 'max:255'],
         ]);
 
         $params['featured'] = $request->has('featured');
 
-        Auth::user()->services()->create($params);
+        Service::create($params);
 
         return redirect('/adminonline/services')->with('success', 'Servicio creado correctamente');
     }
@@ -41,12 +44,16 @@ class ServicesController extends Controller {
     public function update(Request $request, Service $service){
         $params = $request->validate([
             'name' => ['required'],
-            'subtitle' => ['required'],
-            'description' => ['required'],
+            'subtitle' => ['nullable', 'max:100'],
             'type' => ['required', Rule::in(['Curso', 'Auditoría'])],
+            'version' => ['nullable'],
+            'nomenclature' => ['nullable'],
+            'months_to_expire' => ['nullable','numeric'],
+            'description' => ['nullable', 'max:255'],
         ]);
         $params['available'] = $request->has('available');
         $params['featured'] = $request->has('featured');
+        $params['obsoleted'] = $request->has('obsoleted');
         $service->update($params);
         return redirect('/adminonline/services/')->with('success', 'Servicio actualizado correctamente');
     }

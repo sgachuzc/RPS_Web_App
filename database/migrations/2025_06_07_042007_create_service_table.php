@@ -13,11 +13,14 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('subtitle')->nullable();
-            $table->text('description');
             $table->string('type')->default('Curso');
+            $table->string('version')->nullable();
+            $table->string('nomenclature')->nullable();
+            $table->integer('months_to_expire')->nullable();
             $table->boolean('available')->default(true);
             $table->boolean('featured')->default(false);
-            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
+            $table->boolean('obsoleted')->default(false);
+            $table->text('description');
             $table->timestamps();
         });
     }

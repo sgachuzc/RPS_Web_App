@@ -22,7 +22,29 @@
             <option value="Auditoría">Auditoría</option>
           </x-ui.form-select>
         </div>
-        <div class="col d-flex align-items-center">
+        <div class="col">
+          <x-ui.form-field type="text" name="version">
+            Versión <span style="color: grey; font-size: 12px">(Opcional)</span>
+          </x-ui.form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <x-ui.form-field type="text" name="nomenclature">
+            Nomenclatura para certificado
+          </x-ui.form-field>
+          <div class="form-text mb-2" style="margin-top: -10px">
+            A esta nomenclatura le seguira información especifica del participante
+          </div>
+        </div>
+        <div class="col">
+          <x-ui.form-field type="number" name="months_to_expire">
+            Tiempo de validez (meses) <span style="color: grey; font-size: 12px">(Opcional)</span>
+          </x-ui.form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex align-items-center gap-3 mb-3">
           <x-ui.form-checkbox  name="featured">
             Destacado
           </x-ui.form-checkbox>

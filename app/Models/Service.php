@@ -14,9 +14,14 @@ class Service extends Model {
     protected $fillable = [
         'name',
         'subtitle',
+        'type',
+        'version',
+        'nomenclature',
+        'months_to_expire',
         'description',
         'available',
-        'featured'
+        'featured',
+        'obsoleted'
     ];
 
     public function user(): BelongsTo {
