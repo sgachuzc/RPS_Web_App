@@ -26,7 +26,7 @@
         <th>Nombre</th>
         <th>Correo electónico</th>
         <th>Teléfono</th>
-        <th>Certificado</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody class="text-center">
@@ -43,10 +43,19 @@
             @if ($certificate && $certificate->sent)
               <x-ui.icon icon="check"/>
             @else
+            <div class="btn-group" role="group" aria-label="Acciones">
               <form action="{{ route('certificates.deliver', [$participant->id, $service->id]) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-success btn-sm">Entregar</button>
+                <button type="submit" class="btn btn-outline-success gap-2" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Certificado</button>
               </form>
+              <form action="{{ route('participants.delete', [$inscription->id,$participant->id]) }}" method="POST">
+                @csrf
+                @method('delete')
+                <button class="btn btn-outline-danger btn-delete" type="submit">
+                  <x-ui.icon icon="delete"/>
+                </button>
+              </form>
+            </div>
             @endif
           </td>
         </tr>

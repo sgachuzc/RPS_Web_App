@@ -24,7 +24,7 @@
               $startDate = \Carbon\Carbon::parse($nextInscription->start_date)->translatedFormat('d F');
               $endDate = \Carbon\Carbon::parse($nextInscription->end_date)->translatedFormat('d F');
             @endphp
-            {{ $nextInscription->service->name.': '.$startDate.' - '.$endDate }}
+            {{ $nextInscription->customer->name.' - '.$nextInscription->service->name.': '.$startDate.' - '.$endDate }}
           </p>
         @empty
           <p class="form-text">Vacío</p>

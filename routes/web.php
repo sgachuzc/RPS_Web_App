@@ -78,6 +78,8 @@ Route::prefix('adminonline')->group(function(){
 
     Route::post('/certificates/deliver/{participant}/{service}', [CertificatesController::class, 'deliver'])->name('certificates.deliver');
 
+    Route::delete('/participants/{inscription}/{participant}', [ParticipantController::class, 'delete'])->name('participants.delete')->middleware('auth');;
+
     Route::prefix('configurations')->middleware('auth')->can('admin')->group(function(){
         Route::get('/', [ConfigurationsController::class, 'index']);
         Route::patch('/store', [ConfigurationsController::class, 'store']);

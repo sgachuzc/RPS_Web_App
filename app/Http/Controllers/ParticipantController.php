@@ -34,4 +34,9 @@ class ParticipantController extends Controller {
 
         return redirect()->back()->with('success', '¡Registro exitoso!');
     }
+
+    public function delete(Inscription $inscription, Participant $participant){
+        $inscription->participants()->detach($participant->id);
+        return redirect()->route('inscriptions.details', $inscription->id)->with('success', 'Participante eliminado del curso');
+    }
 }

@@ -32,7 +32,7 @@ class AdminController extends Controller {
 
     public function index(){
         $topServices = $this->chartHelper->getTopServices();
-        $nextInscriptions = Inscription::with('service')->where('status', InscriptionsController::STATUS_START)
+        $nextInscriptions = Inscription::with('service', 'customer')->where('status', InscriptionsController::STATUS_START)
             ->where('start_date', '>=', Carbon::now())
             ->orderBy('start_date', 'asc')
             ->limit(5)
