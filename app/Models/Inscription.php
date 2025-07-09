@@ -35,7 +35,7 @@ class Inscription extends Model {
     }
 
     public function participants(){
-        return $this->hasMany(Participant::class);
+        return $this->belongsToMany(Participant::class);
     }
 
     public function comments(): HasMany {

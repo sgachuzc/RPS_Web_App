@@ -10,11 +10,9 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Inscription::class)->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->boolean('certificated_sent')->default(false);
             $table->timestamps();
         });
     }

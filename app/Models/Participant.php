@@ -10,19 +10,17 @@ class Participant extends Model {
     use HasFactory;
 
     protected $fillable = [
-        'inscription_id',
         'name',
         'email',
-        'phone',
-        'certificated_sent'
+        'phone'
     ];
     
-    public function inscription(){
-        return $this->belongsTo(Inscription::class);
+    public function inscriptions(){
+        return $this->belongsToMany(Inscription::class);
     }
 
-    public function certificate(){
-        return $this->hasOne(Certificate::class);
+    public function certificates(){
+        return $this->hasMany(Certificate::class);
     }
 
     public function comments(){
