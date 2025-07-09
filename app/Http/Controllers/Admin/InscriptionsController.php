@@ -140,7 +140,7 @@ class InscriptionsController extends Controller {
         $inscriptionPreview = $inscription->service->name.': '.$startDate.' - '.$endDate;
 
         $service = $inscription->service;
-        $participants = Participant::with('certificate')->where('inscription_id', $inscription->id)->get();
+        $participants = $inscription->participants()->with('certificates')->get();
         
         return view('admin.inscriptions.details', [
             'inscription' => $inscription,

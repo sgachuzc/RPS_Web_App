@@ -11,6 +11,7 @@ class Certificate extends Model {
         'participant_id',
         'service_id',
         'code',
+        'service_version',
         'issue_date',
         'expiry_date',
         'sent'

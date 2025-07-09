@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use App\Models\Certificate;
 use App\Models\Comment;
+use App\Models\Inscription;
 use App\Models\Participant;
 use App\Models\Service;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -23,17 +24,20 @@ class CertificateMail extends Mailable implements ShouldQueue {
     protected Comment $comment;
     protected Participant $participant;
     protected Service $service;
+    protected Inscription $inscription;
 
     public function __construct(
         Certificate $certificate,
         Comment $comment,
         Participant $participant,
-        Service $service
+        Service $service,
+        Inscription $inscription
     ){
         $this->certificate = $certificate;
         $this->comment = $comment;
         $this->participant = $participant;
         $this->service = $service;
+        $this->inscription = $inscription;
     }
 
     public function envelope(): Envelope {
@@ -69,6 +73,14 @@ class CertificateMail extends Mailable implements ShouldQueue {
             $this->certificate->sent = true;
             $this->certificate->save();
         }
+
+        $this->inscription->participants()->updateExistingPivot($this->participant->id, [
+            'certificated_sent' => true
+        ]);
+
+        // $this->participant->inscriptions()->updateExistingPivot($this->inscription->id, [
+        //     'certificated_sent' => true,
+        // ]);
 
         return [
             Attachment::fromData(

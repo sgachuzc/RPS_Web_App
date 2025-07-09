@@ -14,14 +14,24 @@ class ParticipantController extends Controller {
     }
 
     public function register(Request $request, string $token){
-        $inscription = Inscription::where('registration_token', $token)->firstOrFail();
         $params = $request->validate([
-            'name' => ['required'],
             'email' => ['required','email'],
-            'phone' => ['required', 'digits:10', 'max:10']
         ]);
-        $params['inscription_id'] = $inscription->id;
-        Participant::create($params);
+
+        $participant = Participant::where('email', $params['email'])->first();
+
+        if (!$participant) {
+            $params = $request->validate([
+                'name' => ['required'],
+                'email' => ['required','email'],
+                'phone' => ['required', 'digits:10', 'max:10']
+            ]);
+            $participant = Participant::create($params);
+        }
+
+        $inscription = Inscription::where('registration_token', $token)->firstOrFail();
+        $inscription->participants()->attach($participant->id);
+
         return redirect()->back()->with('success', '¡Registro exitoso!');
     }
 }

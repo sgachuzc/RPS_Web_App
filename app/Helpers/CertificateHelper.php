@@ -16,29 +16,27 @@ class CertificateHelper {
     $this->configController = $configController;
   }
 
-  const duration = 12; // Duration in months
-  const codeLength = 25; // Length of the generated code
-
-  public function generateCode(int $certificateId): string {
-    return $certificateId.''.Str::random(self::codeLength);
-  }
-
-  public function generateExpirationDate(): string {
-    $configTime = $this->configController->getConfiguration('certificate_validity_time');
-    $months = ($configTime) ? $configTime : self::duration;
-    $months = (int) $months;
-    return now()->addMonths($months)->toDateString();
+  public function generateCode(string $nomenclature, int $participantId): string {
+    return $nomenclature.'-'.now()->format('Y').'-'.$participantId.''.Str::random(5);
   }
 
   public function validateCertificate(string $code){
-    $certificate = Certificate::where('code', $code)->first();
+    $certificate = Certificate::with('service')->where('code', $code)->first();
+    if (!$certificate) return 'notExist';
 
-    if (!$certificate) {
-      return false;
+    $service = $certificate->service;
+
+    if ($service->obsoleted === true || $service->version !== $certificate->version) {
+      $status = 'obsoleted';
+    }
+    
+    if($certificate->expiry_date){
+      $status = ( now()->lessThanOrEqualTo($certificate->expiry_date) ) ? 'onTime' : 'expired';
+    }else{
+      $status = 'withoutExpiration';
     }
 
-    $now = now();
-    return ($now->lessThanOrEqualTo($certificate->expiry_date)) ? true : false;
+    return $status;
   }
 
 }

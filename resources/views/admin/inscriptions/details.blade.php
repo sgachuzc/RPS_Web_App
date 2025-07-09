@@ -22,6 +22,7 @@
   <x-ui.admin-table id="inscriptions">
     <thead class="table-dark">
       <tr>
+        <th>#</th>
         <th>Nombre</th>
         <th>Correo electónico</th>
         <th>Teléfono</th>
@@ -29,13 +30,17 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      @foreach ($participants as $participant)
+      @foreach ($participants as $key => $participant)
+        @php
+            $certificate = $participant->certificates->where('service_id', $service->id)->first();
+        @endphp
         <tr>
+          <td>{{ $key + 1 }}</td>
           <td>{{ $participant->name }}</td>
           <td>{{ $participant->email }}</td>
           <td>{{ $participant->phone }}</td>
           <td>
-            @if ($participant->certificate && $participant->certificate->sent)
+            @if ($certificate && $certificate->sent)
               <x-ui.icon icon="check"/>
             @else
               <form action="{{ route('certificates.deliver', [$participant->id, $service->id]) }}" method="POST">

@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->foreignIdFor(Participant::class)->constrained();
             $table->foreignIdFor(Service::class)->constrained();
             $table->string('code')->unique();
+            $table->string('service_version')->nullable();
             $table->date('issue_date');
             $table->date('expiry_date')->nullable();
             $table->boolean('sent')->default(false);

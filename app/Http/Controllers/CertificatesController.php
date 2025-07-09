@@ -22,19 +22,34 @@ class CertificatesController extends Controller {
     }
     
     public function deliver(int $participantId, int $serviceId){
-        $participant = Participant::with('inscription.customer', 'inscription.service')->findOrFail($participantId);
-        $service = Service::findOrFail($serviceId);
+        $participant = Participant::findOrFail($participantId);
+
+        $inscription = $participant->inscriptions()
+            ->with(['customer', 'service'])
+            ->where('service_id', $serviceId)
+            ->firstOrFail();
+        $service = $inscription->service;
+
+        $expiry_date = null;
+        if ($service->months_to_expire) {
+            $monthsToExpire = (int) $service->months_to_expire;
+            $expiry_date = now()->addMonths($monthsToExpire)->toDateString();
+        }
+
+        $nomenclature = ($service->nomenclature) ? $service->nomenclature : 'RPS';
+        $code = $this->certificateHelper->generateCode($nomenclature, $participant->id);
 
         $certificate = Certificate::create([
             'participant_id' => $participant->id,
             'service_id' => $service->id,
-            'code' => $this->certificateHelper->generateCode(1),
+            'code' => $code,
+            'service_version' => $service->version,
             'issue_date' => now(),
-            'expiry_date' => $this->certificateHelper->generateExpirationDate(),
+            'expiry_date' => $expiry_date,
         ]);
 
         $comment = Comment::create([
-            'inscription_id' => $participant->inscription->id,
+            'inscription_id' => $inscription->id,
             'participant_id' => $participant->id,
             'token' => $certificate->code
         ]);
@@ -43,10 +58,11 @@ class CertificatesController extends Controller {
             $certificate,
             $comment,
             $participant,
-            $service
+            $service,
+            $inscription
         ));
 
-        return back()->with('success', 'Certificado generado, se entregará por correo en unos momentos.');
+        return redirect()->route('inscriptions.details', $inscription->id)->with('success', 'Certificado generado, se entregará por correo en unos momentos. Favor de actualizar para ver el cambio.');
     }
 
     public function validate(Request $request){
@@ -56,12 +72,8 @@ class CertificatesController extends Controller {
 
         $code = $param['code'];
 
-        $isOnTime = $this->certificateHelper->validateCertificate($code);
+        $status = $this->certificateHelper->validateCertificate($code);
 
-        if ($isOnTime) {
-            return redirect()->back()->with('success', 'Tu certificado aún tiene validez');
-        } else {
-            return redirect()->back()->with('success', 'Tu certificado ha vencido');
-        }
+        return redirect()->back()->with('success', $status);
     }
 }
