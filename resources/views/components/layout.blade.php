@@ -11,12 +11,13 @@
 <body>
   <x-ui.navbar>
     <x-ui.nav_links href="/" :active="request()->is('/')">Inicio</x-ui.nav_links>
-    <x-ui.nav_links href="/servicios" :active="request()->is('servicios')">Servicios</x-ui.nav_links>
+    <x-ui.nav_links href="/cursos" :active="request()->is('courses')">Cursos</x-ui.nav_links>
     <x-ui.nav_links href="/nosotros" :active="request()->is('nosotros')">Nosotros</x-ui.nav_links>
     <x-ui.nav_links href="/contacto" :active="request()->is('contacto')">Contacto</x-ui.nav_links>
   </x-ui.navbar>
-  <main style="width: 100%; margin: 0; overflow:hidden; background-color: var(--fourth)">
+  <main class="d-grid" style="width: 100%; margin: 0; overflow:hidden; background-color: var(--fourth)">
     {{ $slot }}
   </main>
+  <x-ui.footer/>
 </body>
 </html>

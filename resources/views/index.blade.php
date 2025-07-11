@@ -1,10 +1,9 @@
 <x-layout>
   <x-public-index.hero />
   <x-public-index.offers />
-  <x-public-index.statistics />
-  <form action="/certificates/validate" method="post">
-      @csrf
-      <input type="text" name="code">
-      <button type="submit">Validar</button>
-  </form>
+  {{-- <x-public-index.statistics /> --}}
+  <x-public-index.about />
+  <x-public-index.carrusel />
+  <x-public-index.auditories />
+  <x-public-index.contact />
 </x-layout>
