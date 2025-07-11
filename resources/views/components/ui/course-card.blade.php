@@ -1,10 +1,17 @@
+@props([
+  'id' => '',
+  'name' => '',
+  'subtitle' => '',
+
+])
+
 <div class="course">
   <div class="flip-card mx-auto my-0">
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <img src="{{ Vite::asset('resources/images/certified.png') }}" alt="Team Member" class="profile-img">
-        <h3>Titulo</h3>
-        <p>Subtitulo</p>
+        <h3>{{ $name }}</h3>
+        <p>{{ $subtitle }}</p>
         <p class="mt-3">
           <span class="waving-hand">👋</span> ¿Quieres saber más?
         </p>
