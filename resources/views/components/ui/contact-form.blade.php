@@ -1,29 +1,25 @@
 <div class="card">
   <div class="card-body">
-    <form class="needs-validation" novalidate method="POST" action="">
+    @if (session('success'))
+      <x-ui.alert>
+        {{ session('success') }}
+      </x-ui.alert>
+    @endif
+    <form class="needs-validation" novalidate method="POST" action="/contacts/create">
       @csrf
+      <x-ui.form-field type="text" name="name" :isRequired="true">
+        Nombre
+      </x-ui.form-field>
       <div class="row">
-        <div class="col">
-          <x-ui.form-field type="text" name="name" :isRequired="true">
-            Nombre
-          </x-ui.form-field>
-        </div>
         <div class="col">
           <x-ui.form-field type="email" name="email" :isRequired="true">
             Correo electrónico
           </x-ui.form-field>
         </div>
-      </div>
-      <div class="row">
         <div class="col">
           <x-ui.form-field type="text" name="phone" :isRequired="true">
             Teléfono
           </x-ui.form-field>
-        </div>
-        <div class="col">
-          <x-ui.form-select label="Servicios" name="service_id" :isRequired="true">
-            <option value="">Seleccione un rol</option>
-          </x-ui.form-select>
         </div>
       </div>
       <x-ui.form-field type="text" name="issue" :isRequired="true">

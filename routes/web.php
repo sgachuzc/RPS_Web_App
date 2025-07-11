@@ -25,6 +25,8 @@ Route::patch('/comments/{token}', [CommentsController::class, 'store']);
 
 Route::post('/certificates/validate', [CertificatesController::class, 'validate']);
 
+Route::post('/contacts/create', [ContactsController::class, 'store']);
+
 Route::prefix('adminonline')->group(function(){
 
     Route::get('/', [AdminController::class, 'adminOnline'])->name('login')->middleware('guest');

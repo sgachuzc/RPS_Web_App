@@ -14,10 +14,7 @@ class Contact extends Model {
         'email',
         'phone',
         'issue',
-        'service_id'
+        'message'
     ];
     
-    public function service(){
-        return $this->belongsTo(Service::class);
-    }
 }

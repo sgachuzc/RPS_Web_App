@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ContactsController extends Controller {
     
     public function adminIndex(){
-        $contacts = Contact::with('service')->cursorPaginate(10);
+        $contacts = Contact::cursorPaginate(10);
         return view('admin.contacts.index', ['contacts' => $contacts]);
     }
 
@@ -27,12 +27,12 @@ class ContactsController extends Controller {
         $params = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
-            'phone' => ['digits:10', 'max:10'],
+            'phone' => ['numeric','digits:10'],
             'issue' => ['required', 'max:255'],
-            'service_id' => ['required', 'exists:services,id']
+            'message' => ['required', 'max:255']
         ]);
 
         Contact::create($params);
-        return back()->with('success', 'Contacto enviado, pronto te estaremos buscando');
+        return back()->with('success', 'Mensaje enviado, pronto te estaremos buscando');
     }
 }

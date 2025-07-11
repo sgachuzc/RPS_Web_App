@@ -32,7 +32,4 @@ class Service extends Model {
         return $this->hasMany(Inscription::class);
     }
 
-    public function contacts(): HasMany {
-        return $this->hasMany(Contact::class);
-    }
 }

@@ -20,10 +20,10 @@
           <strong>Teléfono:</strong> {{ $contact->phone }}
         </p>
         <p class="form-text mb-2">
-          <strong>Servicio:</strong> {{ $contact->service->name }}
+          <strong>Asunto:</strong> {{ $contact->issue }}
         </p>
         <p class="form-text mb-2">
-          <strong>Asunto:</strong> {{ $contact->issue }}
+          <strong>Mensaje:</strong> {{ $contact->message }}
         </p>
         <form action="/adminonline/contacts/{{ $contact->id }}" method="post">
           @csrf
