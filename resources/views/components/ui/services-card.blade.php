@@ -1,4 +1,5 @@
 @props([
+  'id' => '',
   'name' => '',
   'subtitle' => '',
   'featured' => false,
@@ -27,7 +28,7 @@
                     {{ $description }}
                 </p>
                 <div class="d-flex gap-3 mb-4">
-                    <a class="btn button_custom_primary d-flex gap-2" href="">
+                    <a class="btn button_custom_primary d-flex gap-2" href="/details/{{ $id }}">
                       Ver más
                       <x-ui.icon icon="read_more" />
                     </a>

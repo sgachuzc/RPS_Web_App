@@ -23,6 +23,10 @@ class SiteController extends Controller {
         return view('services', ['auditories' => $auditories]);
     }
 
+    public function details(Service $service){
+        return view('details', ['service' => $service]);
+    }
+
     public function contact(){
         return view('contact');
     }

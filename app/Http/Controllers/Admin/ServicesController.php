@@ -28,7 +28,7 @@ class ServicesController extends Controller {
             'nomenclature' => ['nullable'],
             'months_to_expire' => ['nullable','numeric'],
             'description' => ['nullable', 'max:255'],
-            'full_description' => ['nullable', 'max:255']
+            'full_description' => ['nullable']
         ]);
 
         $params['featured'] = $request->has('featured');
@@ -51,7 +51,7 @@ class ServicesController extends Controller {
             'nomenclature' => ['nullable'],
             'months_to_expire' => ['nullable','numeric'],
             'description' => ['nullable', 'max:255'],
-            'full_description' => ['nullable', 'max:255']
+            'full_description' => ['nullable']
         ]);
         $params['available'] = $request->has('available');
         $params['featured'] = $request->has('featured');

@@ -20,7 +20,7 @@
         <h3>Acerca</h3>
         <p>{{ $description}}</p>
         <div class="social-icons mt-4">
-          <a class="btn button_custom_secondary d-flex gap-2" href="">
+          <a class="btn button_custom_secondary d-flex gap-2" href="/details/{{ $id }}">
             Ver más
             <x-ui.icon icon="read_more" />
           </a>

@@ -9,7 +9,7 @@
         </div>
         @else
           @foreach ($courses as $course)
-            <x-ui.services-card name="{{ $course->name }}" subtitle="{{ $course->subtitle }}" featured="{{ $course->featured }}"/>        
+            <x-ui.services-card id="{{ $course->id }}" name="{{ $course->name }}" subtitle="{{ $course->subtitle }}" featured="{{ $course->featured }}"/>        
           @endforeach
         @endif
       </div>

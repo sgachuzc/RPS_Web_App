@@ -7,7 +7,7 @@
           <h2 class="mb-0">Otros servicios</h2>
         </div>
         @foreach ($auditories as $auditory)
-          <x-ui.services-card name="{{ $auditory->name }}" subtitle="{{ $auditory->subtitle }}" featured="{{ $auditory->featured }}" description="{{ $auditory->description }}"/>   
+          <x-ui.services-card id="{{ $auditory->id }}" name="{{ $auditory->name }}" subtitle="{{ $auditory->subtitle }}" featured="{{ $auditory->featured }}" description="{{ $auditory->description }}"/>   
         @endforeach
       </div>
     </div>
