@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'index']);
 Route::get('/cursos', [SiteController::class, 'courses']);
 Route::get('/search', SearchController::class);
+Route::get('/servicios', [SiteController::class, 'services']);
 
 Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
 Route::post('/register/{token}', [ParticipantController::class, 'register']);

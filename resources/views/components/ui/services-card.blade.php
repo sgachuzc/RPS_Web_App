@@ -4,7 +4,7 @@
   'featured' => false,
 ])
 
-<div class="contact-card bg-white rounded-4 shadow-sm overflow-hidden">
+<div class="contact-card bg-white rounded-4 shadow-sm overflow-hidden mb-3">
     <div class="row g-0">
         <div class="col-md-12">
             <div class="card-body p-4">

@@ -18,5 +18,9 @@ class SiteController extends Controller {
         return view('courses', ['featuredCourses' => $courses[1], 'courses' => $courses[0] ]);
     }
 
+    public function services(){
+        $auditories = Service::where('type', 'Auditoría')->where('available', true)->latest()->get();
+        return view('services', ['auditories' => $auditories]);
+    }
     
 }

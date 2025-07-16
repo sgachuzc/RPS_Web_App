@@ -19,6 +19,7 @@
   <x-ui.navbar>
     <x-ui.nav_links href="/" :active="request()->is('/')">Inicio</x-ui.nav_links>
     <x-ui.nav_links href="/cursos" :active="request()->is('cursos')">Cursos</x-ui.nav_links>
+    <x-ui.nav_links href="/servicios" :active="request()->is('servicios')">Otros servicios</x-ui.nav_links>
     <x-ui.nav_links href="/nosotros" :active="request()->is('nosotros')">Nosotros</x-ui.nav_links>
     <x-ui.nav_links href="/contacto" :active="request()->is('contacto')">Contacto</x-ui.nav_links>
   </x-ui.navbar>
