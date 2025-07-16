@@ -2,6 +2,7 @@
   'name' => '',
   'subtitle' => '',
   'featured' => false,
+  'description' => ''
 ])
 
 <div class="contact-card bg-white rounded-4 shadow-sm overflow-hidden mb-3">
@@ -23,8 +24,7 @@
                     @endif
                 </div>
                 <p class="card-text text-muted mb-4">
-                    Passionate about creating intuitive and beautiful digital experiences. Specializing
-                    in user-centered design and design systems.
+                    {{ $description }}
                 </p>
                 <div class="d-flex gap-3 mb-4">
                     <a class="btn button_custom_primary d-flex gap-2" href="">

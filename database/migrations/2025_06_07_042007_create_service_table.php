@@ -20,7 +20,8 @@ return new class extends Migration {
             $table->boolean('available')->default(true);
             $table->boolean('featured')->default(false);
             $table->boolean('obsoleted')->default(false);
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->text('full_description')->nullable();
             $table->timestamps();
         });
     }

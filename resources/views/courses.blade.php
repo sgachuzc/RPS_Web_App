@@ -29,7 +29,7 @@
           <h2 class="mb-0">Otros cursos</h2>
         </div>
         @foreach ($courses as $course)
-          <x-ui.services-card name="{{ $course->name }}" subtitle="{{ $course->subtitle }}" featured="{{ $course->featured }}"/>   
+          <x-ui.services-card name="{{ $course->name }}" subtitle="{{ $course->subtitle }}" featured="{{ $course->featured }}" description="{{ $course->description }}"/>   
         @endforeach
       </div>
     </div>

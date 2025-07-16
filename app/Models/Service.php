@@ -19,6 +19,7 @@ class Service extends Model {
         'nomenclature',
         'months_to_expire',
         'description',
+        'full_description',
         'available',
         'featured',
         'obsoleted'

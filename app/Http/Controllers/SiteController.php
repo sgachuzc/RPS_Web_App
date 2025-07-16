@@ -22,5 +22,9 @@ class SiteController extends Controller {
         $auditories = Service::where('type', 'Auditoría')->where('available', true)->latest()->get();
         return view('services', ['auditories' => $auditories]);
     }
+
+    public function contact(){
+        return view('contact');
+    }
     
 }

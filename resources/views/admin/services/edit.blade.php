@@ -57,8 +57,11 @@
           </x-ui.form-checkbox>
         </div>
       </div>
-      <x-ui.form-textarea name="description" label="Descripción">
+      <x-ui.form-textarea name="description" label="Descripción corta">
         {{$service->description}}
+      </x-ui.form-textarea>
+      <x-ui.form-textarea name="full_description" label="Descripción detallada">
+        {{$service->full_description}}
       </x-ui.form-textarea>
       <div class="col-12 mt-2 mb-3">
         <button class="btn button_custom_primary w-100" type="submit">Actualizar</button>

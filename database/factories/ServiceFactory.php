@@ -15,7 +15,8 @@ class ServiceFactory extends Factory {
             'subtitle' => $this->faker->word(),
             'description' => $this->faker->paragraph,
             'type' => fake()->randomElement(['Curso','Auditoría']),
-            'featured' => $this->faker->boolean
+            'featured' => $this->faker->boolean,
+            'full_description' => $this->faker->paragraph
         ];
     }
 }

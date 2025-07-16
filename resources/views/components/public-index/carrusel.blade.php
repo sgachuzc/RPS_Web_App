@@ -19,7 +19,7 @@
       @endif
       <div class="carrusel_courses w-100">
         @foreach ($courses as $course)
-        <x-ui.course-card id="{{ $course->id }}" name="{{ $course->name }}" subtitle="{{ $course->subtitle }}"/>
+        <x-ui.course-card id="{{ $course->id }}" name="{{ $course->name }}" subtitle="{{ $course->subtitle }}" description="{{ $course->description }}"/>
         @endforeach
       </div>
     </div>

@@ -2,7 +2,7 @@
   'id' => '',
   'name' => '',
   'subtitle' => '',
-
+  'description' => ''
 ])
 
 <div class="course">
@@ -18,8 +18,7 @@
       </div>
       <div class="flip-card-back">
         <h3>Acerca</h3>
-        <p>I'm passionate about creating beautiful and functional websites. With 5 years of experience,
-          I specialize in front-end development and UX design.</p>
+        <p>{{ $description}}</p>
         <div class="social-icons mt-4">
           <a class="btn button_custom_secondary d-flex gap-2" href="">
             Ver más
