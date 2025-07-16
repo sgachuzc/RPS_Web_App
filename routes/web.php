@@ -12,10 +12,13 @@ use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'index']);
+Route::get('/cursos', [SiteController::class, 'courses']);
+Route::get('/search', SearchController::class);
 
 Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
 Route::post('/register/{token}', [ParticipantController::class, 'register']);

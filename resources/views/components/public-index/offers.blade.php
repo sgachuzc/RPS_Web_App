@@ -7,10 +7,10 @@
           <x-ui.public-data-card class="offer_card p-5 rounded-0" aos="fade-right">
             <div class="d-flex flex-column justify-content-center align-items-center text-center ">
               <img class="mb-5" src="{{ Vite::asset('resources/images/card_todo.svg') }}" alt="" width="240px">
-              <h5>Cursos y auditorías</h5>
+              <h5>Cursos</h5>
               <p class="card-text">Transforma tu equipo con nuestros cursos y descubre áreas de mejora con auditorías personalizadas.</p>
               <div class="col-12 mb-1">
-                <a class="btn button_custom_primary" href="#">Ver servicios</a>
+                <a class="btn button_custom_primary" href="/cursos">Ver servicios</a>
               </div>
             </div>
           </x-ui.public-data-card>

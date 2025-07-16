@@ -8,10 +8,17 @@
   @vite(['resources/css/app.css', 'resources/js/script.js'])
   <title>RPS</title>
 </head>
+<style>
+  body{
+    display: grid !important;
+    grid-template-rows: 70px 1fr auto;
+    min-height: 100dvh;
+  }
+</style>
 <body>
   <x-ui.navbar>
     <x-ui.nav_links href="/" :active="request()->is('/')">Inicio</x-ui.nav_links>
-    <x-ui.nav_links href="/cursos" :active="request()->is('courses')">Cursos</x-ui.nav_links>
+    <x-ui.nav_links href="/cursos" :active="request()->is('cursos')">Cursos</x-ui.nav_links>
     <x-ui.nav_links href="/nosotros" :active="request()->is('nosotros')">Nosotros</x-ui.nav_links>
     <x-ui.nav_links href="/contacto" :active="request()->is('contacto')">Contacto</x-ui.nav_links>
   </x-ui.navbar>

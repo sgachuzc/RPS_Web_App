@@ -5,6 +5,7 @@
   'isRequired' => false,
   'isReadonly' => false,
   'value' => '',
+  'placeholder' => ''
 ])
 
 <div class="mb-3 text-left">
@@ -18,6 +19,7 @@
     {{ ($isRequired) ? "required" : '' }}
     {{ ($isReadonly) ? "readonly" : '' }}
      {{ $min !== '' ? "min=$min" : '' }}
+    placeholder="{{ $placeholder }}"
   >
   @error($name)
   <div class="mt-1" style="color:red;">
