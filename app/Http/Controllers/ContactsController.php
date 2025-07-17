@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\ConfigurationsController;
+use App\Mail\ContactMail;
 use App\Models\Contact;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactsController extends Controller {
+
+    protected ConfigurationsController $configController;
+
+    public function __construct(
+        ConfigurationsController $configController
+    ){
+        $this->configController = $configController;
+    }
     
     public function adminIndex(){
         $contacts = Contact::cursorPaginate(10);
@@ -32,7 +43,11 @@ class ContactsController extends Controller {
             'message' => ['required', 'max:255']
         ]);
 
-        Contact::create($params);
+        $contact = Contact::create($params);
+
+        $email = $this->configController->getConfiguration('contact_email');
+        Mail::to($email)->queue(new ContactMail($contact));
+
         return back()->with('success', 'Mensaje enviado, pronto te estaremos buscando');
     }
 }

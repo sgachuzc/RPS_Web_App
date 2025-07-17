@@ -15,7 +15,7 @@ class ConfigurationsController extends Controller {
 
     public function store(Request $request){
         $configs = $request->validate([
-            'certificate_validity_time' => 'required|integer|min:1',
+            'contact_email' => ['required','email'],
         ]);
 
         foreach ($configs as $key => $value) {
