@@ -22,7 +22,7 @@
               <h5>Certifica a tus empleados</h5>
               <p class="card-text">Convertimos tu mejora continua en un logro reconocido: certificados con respaldo profesional que marcan la diferencia.</p>
               <div class="col-12 mb-1">
-                <a class="btn button_custom_primary" href="#">Validar ahora</a>
+                <a class="btn button_custom_primary" href="{{ route('certificate') }}">Validar ahora</a>
               </div>
             </div>
           </x-ui.public-data-card>
