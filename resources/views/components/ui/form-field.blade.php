@@ -20,6 +20,8 @@
     {{ ($isReadonly) ? "readonly" : '' }}
      {{ $min !== '' ? "min=$min" : '' }}
     placeholder="{{ $placeholder }}"
+    {{ ($type == 'tel') ? "maxlength=10" : '' }}
+    autocomplete="off"
   >
   @error($name)
   <div class="mt-1" style="color:red;">

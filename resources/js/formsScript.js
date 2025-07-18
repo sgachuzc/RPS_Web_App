@@ -19,3 +19,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
       }, false)
     })
 })()
+
+document.querySelector('#phone').addEventListener('input', function (e) { 
+  e.target.value = e.target.value.replace(/[^0-9]/g,'');
+})
