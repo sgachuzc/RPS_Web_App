@@ -6,6 +6,7 @@ use App\Helpers\CertificateHelper;
 use App\Mail\CertificateMail;
 use App\Models\Certificate;
 use App\Models\Comment;
+use App\Models\Inscription;
 use App\Models\Participant;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -21,13 +22,8 @@ class CertificatesController extends Controller {
         $this->certificateHelper = $certificateHelper;
     }
     
-    public function deliver(int $participantId, int $serviceId){
-        $participant = Participant::findOrFail($participantId);
-
-        $inscription = $participant->inscriptions()
-            ->with(['customer', 'service'])
-            ->where('service_id', $serviceId)
-            ->firstOrFail();
+    public function deliver(Inscription $inscription, Participant $participant){
+        $inscription->load('service');
         $service = $inscription->service;
 
         $expiry_date = null;
@@ -65,15 +61,40 @@ class CertificatesController extends Controller {
         return redirect()->route('inscriptions.details', $inscription->id)->with('success', 'Certificado generado, se entregará por correo en unos momentos. Favor de actualizar para ver el cambio.');
     }
 
+    public function show(){
+        return view('certificates');
+    }
+
     public function validate(Request $request){
         $param = $request->validate([
-            'code' => ['required', 'exists:certificates,code']
+            'code' => ['required', 'string']
         ]);
+        $certificate = Certificate::with(['participant', 'service'])->where('code', $param['code'])->first();
+        
+        if (!$certificate) {
+            return redirect()->back()->with('error', 'El código del certificado no es válido o no existe.');
+        }
 
-        $code = $param['code'];
+        $previousCertificates = Certificate::where('participant_id', $certificate->participant_id)
+            ->where('service_id', $certificate->service_id)
+            ->where('id', '!=', $certificate->id)
+            ->orderBy('issue_date', 'desc')
+            ->get();
 
-        $status = $this->certificateHelper->validateCertificate($code);
+        $status = $this->certificateHelper->validateCertificate($certificate->code);
+        $message = '¡Certificado Válido!';
+        if ($status === 'expired') {
+            $message = 'Certificado Válido, pero ha expirado';
+        } elseif ($status === 'obsoleted') {
+            $message = 'Certificado válido, pero obsoleto';
+        }
 
-        return redirect()->back()->with('success', $status);
+        $data = [
+            'certificate'           => $certificate,
+            'previous_certificates' => $previousCertificates,
+            'message'               => $message,
+        ];
+
+        return redirect()->back()->with('success', $data);
     }
 }

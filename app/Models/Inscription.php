@@ -35,7 +35,7 @@ class Inscription extends Model {
     }
 
     public function participants(){
-        return $this->belongsToMany(Participant::class);
+        return $this->belongsToMany(Participant::class)->withPivot('certificated_sent') ;
     }
 
     public function comments(): HasMany {

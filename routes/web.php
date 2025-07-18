@@ -22,14 +22,14 @@ Route::get('/search', SearchController::class);
 Route::get('/servicios', [SiteController::class, 'services']);
 Route::get('/details/{service}', [SiteController::class, 'details']);
 Route::get('/contacto', [SiteController::class, 'contact']);
+Route::get('/valida-tu-certificado', [CertificatesController::class,'show'])->name('certificate');
+Route::post('/certificates/validate', [CertificatesController::class, 'validate'])->name('certificates.validate');
 
 Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
 Route::post('/register/{token}', [ParticipantController::class, 'register']);
 
 Route::get('/comments/{token}', [CommentsController::class, 'showForm']);
 Route::patch('/comments/{token}', [CommentsController::class, 'store']);
-
-Route::post('/certificates/validate', [CertificatesController::class, 'validate']);
 
 Route::post('/contacts/create', [ContactsController::class, 'store']);
 
@@ -83,7 +83,7 @@ Route::prefix('adminonline')->group(function(){
         Route::get('/{inscription}/results', [InscriptionsController::class, 'results'])->name('inscriptions.results');
     });
 
-    Route::post('/certificates/deliver/{participant}/{service}', [CertificatesController::class, 'deliver'])->name('certificates.deliver');
+    Route::post('/certificates/deliver/{inscription}/{participant}', [CertificatesController::class, 'deliver'])->name('certificates.deliver');
 
     Route::delete('/participants/{inscription}/{participant}', [ParticipantController::class, 'delete'])->name('participants.delete')->middleware('auth');;
 

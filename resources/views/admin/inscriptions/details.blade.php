@@ -40,11 +40,11 @@
           <td>{{ $participant->email }}</td>
           <td>{{ $participant->phone }}</td>
           <td>
-            @if ($certificate && $certificate->sent)
+            @if ($participant->pivot->certificated_sent)
               <x-ui.icon icon="check"/>
             @else
             <div class="btn-group" role="group" aria-label="Acciones">
-              <form action="{{ route('certificates.deliver', [$participant->id, $service->id]) }}" method="POST">
+              <form action="{{ route('certificates.deliver', [$inscription->id, $participant->id]) }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-outline-success gap-2" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">Certificado</button>
               </form>

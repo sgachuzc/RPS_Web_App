@@ -16,7 +16,7 @@ class Participant extends Model {
     ];
     
     public function inscriptions(){
-        return $this->belongsToMany(Inscription::class);
+        return $this->belongsToMany(Inscription::class)->withPivot('certificated_sent') ;
     }
 
     public function certificates(){
