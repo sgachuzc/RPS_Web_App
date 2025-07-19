@@ -1,10 +1,10 @@
 <section class="container my-5">
   <h2 class="text-center mb-5">Contáctanos</h2>
   <div class="row">
-    <div class="col-md-4 d-flex justify-content-center align-items-center">
+    <div class="col-md-4 d-flex justify-content-center align-items-center" data-aos="fade-right">
       <img src="{{ Vite::asset('resources/images/chatting.svg') }}" alt="" class="img-fluid my-auto">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8" data-aos="fade-left">
       <x-ui.contact-form />
     </div>
   </div>

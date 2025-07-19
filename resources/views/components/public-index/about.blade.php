@@ -3,9 +3,9 @@
     <div class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
       <div class="content" style="padding:40px; background-color: var(--fifth)">
         <h3 style="font-size: 14px; font-weight: 700; color: var(--second); text-transform: uppercase;">¿Quienes somos?</h3>
-        <h2 style="font-size: 24px; font-weight: 700;">Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+        <h2 style="font-size: 24px; font-weight: 700;">Somos una consultora especializada en formación y auditorías, enfocada en impulsar el crecimiento técnico y estratégico de nuestros clientes.</h2>
         <p>
-          Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+          Ayudamos a organizaciones a elevar sus estándares a través de soluciones formativas y evaluaciones personalizadas que generan impacto real.
        </p>
         <div class="text-center text-lg-start">
           <a href="/about" class=" btn button_custom_primary d-inline-flex gap-2 align-items-center justify-content-center align-self-center">

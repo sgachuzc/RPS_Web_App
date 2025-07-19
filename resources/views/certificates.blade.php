@@ -76,7 +76,7 @@
   @else
   <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: 100vh; background-color: #f8f9fa;">
     <div class="container">
-      <div class="row justify-content-center align-items-center">
+      <div class="row justify-content-center align-items-center" data-aos="fade-right">
   
         <!-- Columna para la imagen (visible en pantallas medianas y grandes) -->
         <div class="col-md-6 text-center d-none d-md-block">
@@ -86,7 +86,7 @@
         </div>
   
         <!-- Columna para el formulario -->
-        <div class="col-md-6 col-lg-5">
+        <div class="col-md-6 col-lg-5" data-aos="fade-left">
           <div class="card shadow-lg border-0 rounded-lg">
             <div class="card-body p-5">
               <h2 class="card-title text-center mb-4">Validar Certificado</h2>

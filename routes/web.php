@@ -21,6 +21,7 @@ Route::get('/cursos', [SiteController::class, 'courses']);
 Route::get('/search', SearchController::class);
 Route::get('/servicios', [SiteController::class, 'services']);
 Route::get('/details/{service}', [SiteController::class, 'details']);
+Route::get('/nosotros', [SiteController::class, 'about']);
 Route::get('/contacto', [SiteController::class, 'contact']);
 Route::get('/valida-tu-certificado', [CertificatesController::class,'show'])->name('certificate');
 Route::post('/certificates/validate', [CertificatesController::class, 'validate'])->name('certificates.validate');

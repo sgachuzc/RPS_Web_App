@@ -5,7 +5,7 @@
   'description' => ''
 ])
 
-<div class="course">
+<div class="course" data-aos="zoom-in">
   <div class="flip-card mx-auto my-0">
     <div class="flip-card-inner">
       <div class="flip-card-front">

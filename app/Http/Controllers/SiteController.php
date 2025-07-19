@@ -27,6 +27,10 @@ class SiteController extends Controller {
         return view('details', ['service' => $service]);
     }
 
+    public function about(){
+        return view('about');
+    }
+
     public function contact(){
         return view('contact');
     }
