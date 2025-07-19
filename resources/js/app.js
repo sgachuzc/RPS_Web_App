@@ -65,230 +65,269 @@ new DataTable('#inscriptions',{
   language: languajeOptions
 });
 
-(async function() {
-  const data = window.topServices || [];
-
-  new Chart(
-    document.getElementById('topServices'),
-    {
-      type: 'bar',
-      data: {
-        labels: data.map(row => row.name),
-        datasets: [
-          {
-            label: 'Servicios más suscritos',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('topServices')) {
+  (async function() {
+    const data = window.topServices || [];
+  
+    new Chart(
+      document.getElementById('topServices'),
+      {
+        type: 'bar',
+        data: {
+          labels: data.map(row => row.name),
+          datasets: [
+            {
+              label: 'Servicios más suscritos',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-(async function() {
-  const data = window.resultsQ1 || [];
-
-  new Chart(
-    document.getElementById('resultsQ1'),
-    {
-      type: 'pie',
-      data: {
-        labels: data.map(row => row.answer),
-        datasets: [
-          {
-            label: 'Respuestas a: Modalidad',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('resultsQ1')) {
+  (async function() {
+    const data = window.resultsQ1 || [];
+  
+    new Chart(
+      document.getElementById('resultsQ1'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.answer),
+          datasets: [
+            {
+              label: 'Respuestas a: Modalidad',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-(async function() {
-  const data = window.resultsQ2 || [];
-
-  new Chart(
-    document.getElementById('resultsQ2'),
-    {
-      type: 'pie',
-      data: {
-        labels: data.map(row => row.answer),
-        datasets: [
-          {
-            label: '¿Qué tan satisfecho/a estás con el contenido del curso?',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('resultsQ2')) {
+  (async function() {
+    const data = window.resultsQ2 || [];
+  
+    new Chart(
+      document.getElementById('resultsQ2'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.answer),
+          datasets: [
+            {
+              label: '¿Qué tan satisfecho/a estás con el contenido del curso?',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-(async function() {
-  const data = window.resultsQ3 || [];
-
-  new Chart(
-    document.getElementById('resultsQ3'),
-    {
-      type: 'pie',
-      data: {
-        labels: data.map(row => row.answer),
-        datasets: [
-          {
-            label: '¿Qué tan satisfecho/a estás con el contenido del curso?',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('resultsQ3')) {
+  (async function() {
+    const data = window.resultsQ3 || [];
+  
+    new Chart(
+      document.getElementById('resultsQ3'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.answer),
+          datasets: [
+            {
+              label: '¿Qué tan satisfecho/a estás con el contenido del curso?',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-(async function() {
-  const data = window.resultsQ4 || [];
-
-  new Chart(
-    document.getElementById('resultsQ4'),
-    {
-      type: 'pie',
-      data: {
-        labels: data.map(row => row.answer),
-        datasets: [
-          {
-            label: '¿El contenido cubrió tus expectativas y necesidades?',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('resultsQ4')) {
+  (async function() {
+    const data = window.resultsQ4 || [];
+  
+    new Chart(
+      document.getElementById('resultsQ4'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.answer),
+          datasets: [
+            {
+              label: '¿El contenido cubrió tus expectativas y necesidades?',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-(async function() {
-  const data = window.resultsQ5 || [];
-
-  new Chart(
-    document.getElementById('resultsQ5'),
-    {
-      type: 'pie',
-      data: {
-        labels: data.map(row => row.answer),
-        datasets: [
-          {
-            label: '¿Consideras que los temas tratados fueron claros y bien explicados?',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('resultsQ5')) {
+  (async function() {
+    const data = window.resultsQ5 || [];
+  
+    new Chart(
+      document.getElementById('resultsQ5'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.answer),
+          datasets: [
+            {
+              label: '¿Consideras que los temas tratados fueron claros y bien explicados?',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-(async function() {
-  const data = window.resultsQ6 || [];
-
-  new Chart(
-    document.getElementById('resultsQ6'),
-    {
-      type: 'pie',
-      data: {
-        labels: data.map(row => row.answer),
-        datasets: [
-          {
-            label: '¿Cómo calificarías el desempeño del instructor?',
-            data: data.map(row => row.count)
-          }
-        ]
-      },
-      options:{
-        responsive: true,
-        scales: {
-          y:{
-            beginAtZero: true,
-            ticks:{
-              stepSize: 1,
-              precision: 0
+if (document.getElementById('resultsQ6')) {
+  (async function() {
+    const data = window.resultsQ6 || [];
+  
+    new Chart(
+      document.getElementById('resultsQ6'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.answer),
+          datasets: [
+            {
+              label: '¿Cómo calificarías el desempeño del instructor?',
+              data: data.map(row => row.count)
+            }
+          ]
+        },
+        options:{
+          responsive: true,
+          scales: {
+            y:{
+              beginAtZero: true,
+              ticks:{
+                stepSize: 1,
+                precision: 0
+              }
             }
           }
         }
       }
-    }
-  );
-})();
+    );
+  })();
+}
 
-document.querySelector('#phone').addEventListener('input', function (e) { 
-  e.target.value = e.target.value.replace(/[^0-9]/g,'');
+if (document.querySelector('#phone')) {
+  document.querySelector('#phone').addEventListener('input', function (e) { 
+    e.target.value = e.target.value.replace(/[^0-9]/g,'');
+  })
+}
+
+const typeSelect = document.querySelector('#type')
+const courseFields = document.querySelectorAll('.course_field')
+
+if (typeSelect) {
+  typeSelect.addEventListener('change', toggleFields)
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  toggleFields()
 })
+
+function toggleFields() {
+  if(typeSelect.value === 'Curso'){
+    courseFields.forEach(field => {
+      field.style.display = 'block'
+    })
+  }else{
+    courseFields.forEach(field => {
+      field.style.display = 'none'
+    })
+  }
+}

@@ -198,6 +198,9 @@ figure{
 .service-card-badge {
   background-color: var(--second) !important;
 }
+textarea{
+  field-sizing: content;
+}
 
 @media (width < 768px){
   .section_hero .row{

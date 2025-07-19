@@ -23,14 +23,14 @@
             <option value="Auditoría" {{ ($service->type == 'Auditoría') ? 'selected' : '' }}>Auditoría</option>
           </x-ui.form-select>
         </div>
-         <div class="col">
+         <div class="col course_field">
           <x-ui.form-field type="text" name="version" value="{{ $service->version }}">
             Versión <span style="color: grey; font-size: 12px">(Opcional)</span>
           </x-ui.form-field>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col course_field">
           <x-ui.form-field type="text" name="nomenclature" value="{{ $service->nomenclature }}">
             Nomenclatura para certificado
           </x-ui.form-field>
@@ -38,7 +38,7 @@
             A esta nomenclatura le seguira información especifica del participante
           </div>
         </div>
-        <div class="col">
+        <div class="col course_field">
           <x-ui.form-field type="number" name="months_to_expire" value="{{ $service->months_to_expire }}">
             Tiempo de validez (meses) <span style="color: grey; font-size: 12px">(Opcional)</span>
           </x-ui.form-field>
@@ -46,15 +46,17 @@
       </div>
       <div class="row">
         <div class="col d-flex align-items-center gap-3 mb-3">
-          <x-ui.form-checkbox  name="featured" :isChecked="$service->featured">
-            Destacado
-          </x-ui.form-checkbox>
-          <x-ui.form-checkbox  name="obsoleted" :isChecked="$service->obsoleted">
-            Obsoleto
-          </x-ui.form-checkbox>
-          <x-ui.form-checkbox  name="available" :isChecked="$service->available">
-            Habilitado
-          </x-ui.form-checkbox>
+          <div class="course_field">
+            <x-ui.form-checkbox  name="featured" :isChecked="$service->featured">
+              Destacado
+            </x-ui.form-checkbox>
+            <x-ui.form-checkbox  name="obsoleted" :isChecked="$service->obsoleted">
+              Obsoleto
+            </x-ui.form-checkbox>
+            <x-ui.form-checkbox  name="available" :isChecked="$service->available">
+              Habilitado
+            </x-ui.form-checkbox>
+          </div>
         </div>
       </div>
       <x-ui.form-textarea name="description" label="Descripción corta">
