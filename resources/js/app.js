@@ -309,6 +309,12 @@ if (document.querySelector('#phone')) {
   })
 }
 
+if (document.querySelector('#whatsapp_phone')) {
+  document.querySelector('#whatsapp_phone').addEventListener('input', function (e) { 
+    e.target.value = e.target.value.replace(/[^0-9]/g,'');
+  })
+}
+
 const typeSelect = document.querySelector('#type')
 const courseFields = document.querySelectorAll('.course_field')
 

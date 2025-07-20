@@ -16,6 +16,7 @@ class ConfigurationsController extends Controller {
     public function store(Request $request){
         $configs = $request->validate([
             'contact_email' => ['required','email'],
+            'whatsapp_phone' => ['required', 'numeric', 'digits:10'],
         ]);
 
         foreach ($configs as $key => $value) {

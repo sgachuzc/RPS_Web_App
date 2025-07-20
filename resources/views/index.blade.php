@@ -6,4 +6,5 @@
   <x-public-index.carrusel :courses="$courses"/>
   <x-public-index.auditories />
   <x-public-index.contact />
+  <x-ui.floating-button link="{{ $link }}" />
 </x-layout>

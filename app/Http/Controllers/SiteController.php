@@ -3,13 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller {
     
     public function index(){
         $courses = Service::where('type', 'Curso')->where('available', true)->where('featured', true)->get();
-        return view('index', ['courses' => $courses]);
+        $setting = Setting::where('key', 'whatsapp_phone')->first();
+        $phone = ($setting) ? $setting->value : '#';
+        $link = 'https://wa.me/52'.$phone;
+        return view('index', [
+            'courses' => $courses,
+            'link' => $link
+        ]);
     }
 
     public function courses(){
