@@ -8,11 +8,11 @@
         body { 
             font-family: sans-serif; 
             text-align: center;
-            /* background-image: url('../../images/pdf_background.png'); */
-            /* background-repeat: no-repeat;
+            background-image: url('../../images/pdf_background.png'); */
+            background-repeat: no-repeat;
             background-size: 1000px;
             background-position-x: 330px;
-            background-position-y: -75px; */
+            background-position-y: -75px;
         }
         .cert-title { font-size: 2em; margin-top: 30px; }
         .cert-body { margin-top: 30px; font-size: 1.2em; }

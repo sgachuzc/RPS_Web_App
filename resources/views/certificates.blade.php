@@ -8,6 +8,7 @@
       $service = $certificate->service;
       $previousCertificates = $data['previous_certificates'] ?? collect();
       $message = $data['message'] ?? '¡Certificado Válido!';
+      $advertisment = $data['advertisment'];
     @endphp
     <div class="container my-5">
       {{-- Tarjeta principal de validación --}}
@@ -19,6 +20,7 @@
             </svg>
             {{ $message }}
           </h2>
+          <span class=" mt-2 mb-0 d-flex align-items-center justify-content-center">{{$advertisment}}</span>
         </div>
         <div class="card-body p-4 p-md-5">
           <p class="lead">

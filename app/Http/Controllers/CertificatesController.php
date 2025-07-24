@@ -66,11 +66,13 @@ class CertificatesController extends Controller {
     }
 
     public function validate(Request $request){
-        $param = $request->validate([
-            'code' => ['required', 'string']
-        ]);
-        $certificate = Certificate::with(['participant', 'service'])->where('code', $param['code'])->first();
-        
+        // Permitir obtener el código tanto de GET como de POST
+        $code = $request->input('code');
+        if (!$code) {
+            return redirect()->back()->with('error', 'Debes ingresar el código del certificado.');
+        }
+
+        $certificate = Certificate::with(['participant', 'service'])->where('code', $code)->first();
         if (!$certificate) {
             return redirect()->back()->with('error', 'El código del certificado no es válido o no existe.');
         }
@@ -83,18 +85,22 @@ class CertificatesController extends Controller {
 
         $status = $this->certificateHelper->validateCertificate($certificate->code);
         $message = '¡Certificado Válido!';
+        $advertisment = '';
         if ($status === 'expired') {
-            $message = 'Certificado Válido, pero ha expirado';
+            $message = 'Certificado Válido, pero ha expirado.';
+            $advertisment = "Te sugerimos tomar nuevamente el curso.";
         } elseif ($status === 'obsoleted') {
             $message = 'Certificado válido, pero obsoleto';
+            $advertisment = "Te sugerimos tomar nuevamente el curso.";
         }
 
         $data = [
             'certificate'           => $certificate,
             'previous_certificates' => $previousCertificates,
             'message'               => $message,
+            'advertisment'          => $advertisment
         ];
 
-        return redirect()->back()->with('success', $data);
+        return redirect()->route('certificate')->with('success', $data);
     }
 }

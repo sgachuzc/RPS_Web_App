@@ -24,7 +24,7 @@ Route::get('/details/{service}', [SiteController::class, 'details']);
 Route::get('/nosotros', [SiteController::class, 'about']);
 Route::get('/contacto', [SiteController::class, 'contact']);
 Route::get('/valida-tu-certificado', [CertificatesController::class,'show'])->name('certificate');
-Route::post('/certificates/validate', [CertificatesController::class, 'validate'])->name('certificates.validate');
+Route::match(['get', 'post'], '/certificates/validate', [CertificatesController::class, 'validate'])->name('certificates.validate');
 
 Route::get('/register/{token}', [ParticipantController::class, 'showForm'])->name('participants.register');
 Route::post('/register/{token}', [ParticipantController::class, 'register']);
