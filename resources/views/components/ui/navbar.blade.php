@@ -2,7 +2,7 @@
   <nav class="custom_navbar">
     <div class="nav_container">
       <figure class="nav_figure">
-        <img class="nav_logo" src="{{ Vite::asset('resources/images/logo_white.png') }}" alt="RPS Consulting" width="100">
+        <img class="nav_logo" src="{{ Vite::asset('resources/images/logo_white.png') }}" alt="RPS Consulting" width="50">
       </figure>
       <label class="nav_toggle">
         <input type="checkbox" id="menu_input" class="nav_input">
