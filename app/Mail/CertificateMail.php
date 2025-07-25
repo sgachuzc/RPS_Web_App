@@ -8,6 +8,8 @@ use App\Models\Inscription;
 use App\Models\Participant;
 use App\Models\Service;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -62,11 +64,21 @@ class CertificateMail extends Mailable implements ShouldQueue {
     public function attachments(): array {
         $logoPath = public_path('images/logo_black.png');
 
+        $url = route('certificates.validate').'?code='.$this->certificate->code;
+        $qrCode = new QrCode(
+            data: $url,
+            size: 150
+        );
+        $writer = new PngWriter();
+        $result = $writer->write($qrCode);
+        $qrBase64 = base64_encode($result->getString());
+
         $pdf = Pdf::loadView('certificates.pdf', [
             'certificate' => $this->certificate,
             'participant' => $this->participant,
             'service' => $this->service,
-            'logoPath' => $logoPath
+            'logoPath' => $logoPath,
+            'qr' => $qrBase64
         ])->output();
 
         if (!$this->certificate->sent) {
