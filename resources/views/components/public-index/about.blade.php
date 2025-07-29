@@ -8,7 +8,7 @@
           Ayudamos a organizaciones a elevar sus estándares a través de soluciones formativas y evaluaciones personalizadas que generan impacto real.
        </p>
         <div class="text-center text-lg-start">
-          <a href="/about" class=" btn button_custom_primary d-inline-flex gap-2 align-items-center justify-content-center align-self-center">
+          <a href="/nosotros" class=" btn button_custom_primary d-inline-flex gap-2 align-items-center justify-content-center align-self-center">
             <span>Leer más</span>
             <x-ui.icon icon="arrow_forward"/>
           </a>
